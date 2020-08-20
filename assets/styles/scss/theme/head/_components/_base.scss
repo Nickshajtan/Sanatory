@@ -1,0 +1,51 @@
+html,
+body {
+  background-color: $black;
+  background-attachment: fixed;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    min-width: 1150px;
+  }
+}
+
+@media (min-width: 1366px) {
+  .container {
+    min-width: 1200px;
+  }
+}
+
+#content {
+  min-height: calc(100vh - 375px);
+  background-color: $transparent;
+}
+
+.site-container {
+  @include mq('laptop', min) {
+     padding: 0 90px;
+  }
+}
+
+section {
+  width: 100%;
+  position: relative;
+  padding: 40px 0;
+  
+  @include mq('extra-tablet', min) {
+    padding: 80px 0;
+  }
+}
+
+.button,
+%button {
+  @include proto--btn;
+}
+
+h1,
+h2,
+h3,
+h4,
+address {
+  margin: 0;
+}

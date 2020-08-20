@@ -1,0 +1,200 @@
+footer {
+  background-color: $dark;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 15px 0 5px 0;
+}
+
+.site-footer {
+    &__top {
+      padding: 37px 0;
+      border-bottom: 1px solid #484848;
+      
+      @media screen and (min-width: 900px) and (max-width: 1365px) {
+        padding-bottom: 10px;
+      }
+    }
+    
+    &__middle {
+      padding: 37px 0;
+    }
+    
+    &__bottom {
+      width: 100%;
+      border-top: 1px solid #484848;
+      padding-top: 15px;
+      padding-bottom: 22px;
+    }
+  
+    &__footer-block {
+      padding: 15px 25px;
+      text-align: center;
+
+      @include push--auto;
+      @include mq('phone', min ) {
+        padding: 0 15px;
+      }
+    }
+    
+   .link_el,
+   .link_el *,
+    a {
+     transition: .3s;
+     
+     &,
+     &:visited {
+       @include font-source-sans( $middler, $white, normal,  1, $main-font );
+     }
+     
+     &:focus,
+     &:hover {
+       @include font-source-sans( $middler, $helper-color, normal,  1, $main-font );
+     }
+   }
+  
+  
+  
+   @include mq('phone', min ) {
+       nav {
+          padding-left: 0;   
+       }
+   }
+  
+   @include mq('extra-tablet', min ) { 
+       nav {
+          padding-left: 15px;   
+       }
+   }
+  
+   .menu {
+       text-align: center;
+     
+       @include mq('phone', min ) {
+         & {
+           text-align: left;
+           display: flex;
+           justify-content: space-between;
+           padding-top: 15px;
+         }
+       }
+     
+       @include mq('extra-tablet', min) {
+          padding-top: 0;
+       }
+     
+       @include mq('laptop', min) {
+          padding: 0 80px;
+       }
+     
+       a {
+         position: relative;
+         text-align: center;
+         transition: 0.3s;
+         
+         &:after {
+           content: '';
+           display:none;
+           width: 8px;
+           height: 8px;
+           background-color: $helper-color;
+           position: relative;
+           bottom: -4px;
+           margin: 0 auto;
+           transition: width .3s ease-in-out;
+         }
+         
+         @include mq('tablet', min) {
+           &:after {
+             content: '';
+             display: block;
+             width: 0;
+             height: 5px;
+             background-color: $helper-color;
+             bottom: -25px;
+           }
+         }
+         
+         &:hover,
+         &:focus,
+         .current-menu-item & {           
+           color: $white;
+           
+           &:after {
+             display: block;
+           }
+           
+           @include mq('tablet', min) {
+             &:after {
+               width: 100%;
+             }
+           }
+         }
+       }
+     
+       .current-menu-item a {
+          color: $white;
+
+          &:after {
+            display: block;
+          }
+         
+          @include mq('tablet', min) {
+            &:after {
+              width: 100%;
+            }
+          }
+       }
+   }
+  
+   .socials {
+      display: flex;
+      justify-content: space-evenly; 
+     
+      @media screen and (min-width: 900px) and (max-width: 1365px) {
+        margin-top: 35px;  
+      }
+     
+      @include mq('extra-tablet', min ) {
+         justify-content: center;
+         
+         a:not( :first-child ),
+         a:not( :last-child ) {
+           margin: 9px; 
+         }
+        
+        a:first-child {
+          margin-right: 9px;
+          margin-left: 0;
+        }
+        
+        a:last-child {
+          margin-right: 0;
+          margin-left: 9px;
+        }
+        
+        a {
+          img {
+            border: 1px solid $white;
+            border-radius: 100px;
+          }
+        }
+        
+        a:hover,
+        a:focus {
+          transition: all 1s ease-in-out;
+          position: relative;
+          top: -8px;
+          transform: scale(1.2);
+          
+          &:not(:hover) {
+            transition: 1s;
+          }
+          
+          img {
+            border: 1px solid $helper-color;
+          }
+        }
+      }
+   }
+}

@@ -1,0 +1,75 @@
+/*** Form + Modal Form ***/
+section.cf, .modal-form.cf{
+    box-shadow: 0 -5px 15px -5px rgba(0,0,0,0.6);
+    z-index: 70;
+    position: relative; 
+  
+    textarea.hd{
+        display: none;
+    }
+}
+
+/*** Form section ***/
+.cf-section {
+    padding: 0 0 100px 0;
+    background-attachment: fixed;
+  
+    @include bg--auto($transparent, none, cover, no-repeat, overlay);
+  
+    &__header {
+      margin-bottom: 15px;
+      
+      @include mq('extra-tablet', min) {
+        margin-bottom: 47px;
+      }
+      
+      &__title {
+        
+        &,
+        * {
+          
+          @include editor--headers;
+          
+          &,
+          .color_el,
+          .el_color,
+          .size_el,
+          .el_size,
+          span {
+            font-size: $middler;
+            font-weight: bold;
+            line-height: 1.4;
+
+            @include mq('phone', min) {
+              font-size: $middle;
+            }
+            @include mq('tablet', min) {
+              font-size: $big - 8px;
+            }
+            @include mq('laptop', min) {
+              font-size: $big;
+              font-weight: bold;
+              line-height: 58px;
+            }
+          }
+        }
+      }
+    }
+    
+    form,
+    &__form {
+      @extend %form;
+    }
+}
+
+/*** Modal Form ***/
+.modal-form.cf{
+    position: fixed;
+    z-index: 200;
+    background-color: rgba(0,0,0,.7);
+    background-image: none;
+    
+    form{
+      @extend %modal-form;
+    }
+}

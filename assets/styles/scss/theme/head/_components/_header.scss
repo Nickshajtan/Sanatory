@@ -1,0 +1,382 @@
+.site-header {
+  position: relative;
+  padding-bottom: 15px;
+  transition: 0.3s;
+  z-index: 100;
+  
+  @include bg--auto( transparentize( $black, 0.5 ), none, cover, no-repeat );
+  
+  &,
+  *,
+  a, 
+  a:hover, 
+  a:focus, 
+  a:visited {
+    @include font-source-sans( $middler, $white, normal, 1, $main-font);
+  }
+  
+  a:hover, 
+  a:focus {
+    color: $helper-color;
+  }
+  
+  .site-branding {
+    img {
+      max-width: 193px;
+      max-height: 24px;
+    }
+  }
+  
+  .menu {
+    li {
+      display: block;
+      min-width: 120px;
+    }
+    
+    a {
+         position: relative;
+         text-align: center;
+         transition: 0.3s;
+         width: 100%;
+      
+         &:hover,
+         &:focus,
+         .current-menu-item & {           
+           color: $white;
+           font-size: $middler;
+         }
+      
+         &:after {
+           content: '';
+           display:block;
+           width: 8px;
+           height: 8px;
+           background-color: $helper-color;
+           position: relative;
+           top: -70px;
+           margin: 0 auto;
+           transition: width .3s ease-in-out;
+         }
+         
+         @include mq('tablet', min) {
+           &:after {
+             content: '';
+             display: block;
+             width: 0;
+             height: 5px;
+             background-color: $helper-color;
+             top: -70px;
+           }
+         }
+      
+         &:hover,
+         &:focus,
+         .current-menu-item & {           
+           color: $white;
+           
+           &:after {
+             display: block;
+           }
+           
+           @include mq('tablet', min) {
+             &:after {
+               width: 100%;
+             }
+           }
+         }
+      
+      @include mq('laptop', min) {
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+    .current-menu-item a {
+          color: $white;
+          font-size: $middler;
+          font-weight: bold;
+      
+          &:after {
+            display: block;
+          }
+         
+          @include mq('tablet', min) {
+            &:after {
+              width: 100%;
+            }
+          }
+    }
+  }
+  
+  .search-block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &,
+    * {
+      color: transparentize( $white, 0.5 );
+    }
+    
+    &:before {
+      content: '';
+      width: 36px;
+      height: 36px;
+      display: block;
+      background-image: url(../img/icons/search.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 50%;
+      background-color: $white;
+      cursor: pointer;
+      border-radius: 50px;
+      margin-right: 12px;
+    }
+  }
+  
+  .cart-block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:after {
+      content: '';
+      width: 36px;
+      height: 36px;
+      display: block;
+      background-image: url(../img/icons/basket.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      cursor: pointer;
+      border-radius: 50px;
+      margin-left: 16px;
+    }
+  }
+  
+  &.sticky{
+    position: fixed;
+    width: 100%;
+    background-color: transparentize( $black, 0.1 );
+  }
+  
+  &.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  
+  &__top {
+    padding: 41px 0 33px 0;
+    border-top: 1px solid transparentize( $white, 0.8 );
+  }
+  
+  &__middle {
+    padding: 26px 0 33px 0;
+    border-top: 1px solid transparentize( $white, 0.8 );
+  }
+  
+  &__bottom {
+    padding: 36px 0 12px 0;
+    border-top: 1px solid transparentize( $white, 0.8 );
+  }
+  
+  .socials {
+     
+      @include mq('extra-tablet', min ) {
+         
+         a:not( :first-child ),
+         a:not( :last-child ) {
+           margin: 0 9px; 
+         }
+        
+        a:first-child {
+          margin-right: 9px;
+          margin-left: 0;
+        }
+        
+        a:last-child {
+          margin-right: 0;
+          margin-left: 9px;
+        }
+        
+        a {
+          img {
+            border: 1px solid $white;
+            border-radius: 100px;
+          }
+        }
+        
+        a:hover,
+        a:focus {
+          transition: all 1s ease-in-out;
+          position: relative;
+          transform: scale(1.2);
+          
+          &:not(:hover) {
+            transition: 1s;
+          }
+          
+          img {
+            border: 1px solid $helper-color;
+          }
+        }
+      }
+   }
+  
+  @include mq('laptop', max) {
+    display: none;
+  }
+}
+
+
+
+/*
+header{
+
+    .site-branding{
+        font-size: $middle;
+        line-height: 1;
+        color: $orange;
+        .main-part{
+            font-family: $helper-font;
+            letter-spacing: 2px;
+            font-size: $big - 0.2rem;
+            line-height: 0;
+            position: relative;
+            top: 3px;
+        }
+    }
+
+.burger{
+    display: none;
+}
+#content{
+    padding-top: 95px;
+}
+@media screen and ( max-width: 1024px ){
+    header{
+        position: fixed;
+        padding: 5px 0;
+        z-index: 220;
+        &#masthead{
+            min-height: 80px;
+            display: flex;
+            align-items: center;   
+        }
+        .main-navigation ul{
+            display: none;
+            transition: .3s;
+        }
+        .burger{
+            position: absolute;
+            width: 60px;
+            height: 50px;
+            background: $transparent;
+            display: flex;
+            top: 15px;
+            right: 30px;
+            border: 2px solid $white;
+            border-radius: 10px;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+            transition: .3s;
+            cursor: pointer;
+            z-index: 200;
+            span{
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+                height: 3px;
+                width: 80%;
+                background-color: $white;
+                border-radius: 2px;
+                transition: .3s;
+            }
+            &.active{
+                border: none;
+                span{
+                    display: none;
+                    &:first-child{
+                        transform: rotate(45deg);
+                        display: block;
+                        position: absolute;
+                    }
+                    &:last-child{
+                        display: block;
+                        position: absolute;
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+        }
+        &.opened{
+            border-bottom: none;
+            .header-bottom, .main-navigation{
+                position: static;
+            }
+            .main-navigation ul{
+                width: 100%;
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                background: $black;
+                left: 0;
+                right: 0;
+                top: 80px;
+                transition: .3s;
+                padding-top: 15px;
+                padding-left: 45px;
+                padding-right: 45px;
+                border-top: 1px solid $orange;
+                border-bottom: 2px solid $orange;
+                li{
+                    padding: 10px;
+                    border-bottom: 1px solid $white;
+                    padding-left: 0;
+                    &:last-child{
+                        border-bottom: none;
+                    }
+                    a:after{
+                        right: auto;
+                        left: 0;
+                        height: 1px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and ( max-width: 768px ){
+    header{
+        min-height: 90px;
+        .site-branding{
+            .main-part{
+                font-size: $middler;
+            }
+            .separator-part{
+                display: none;
+            }
+        }
+        .phones{
+            margin-top: 20px;
+        }
+        .burger{
+            right: 10px;
+        }
+        &.opened{
+            .main-navigation ul{
+                top: 90px;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    }
+}
+
+*/
