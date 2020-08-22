@@ -27,7 +27,7 @@ $addresses_check = get_option('options_addresses_display');
 
 $phones_display    = ( is_array( $phones_check ) && in_array('header', $phones_check ) )    ? true : false; 
 $emails_display    = ( is_array( $emails_check ) && in_array('header', $emails_check ) )    ? true : false; 
-$addresses_display = ( is_array( $addresses_check ) && in_array('header', $addresses_check ) ) ? true : false;  
+$addresses_display = ( is_array( $addresses_check ) && in_array('header', $addresses_check ) ) ? true : false; 
 
 if( $phones && $phones_display || $emails && $emails_display || $addresses && $addresses_display ) : ?>
                  <div class="site-header__middle col-12 d-flex order-2 order-xl-2 pl-0 pr-0">

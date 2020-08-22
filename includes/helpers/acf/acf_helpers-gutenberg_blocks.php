@@ -118,6 +118,18 @@ function hcc_register_acf_block_types() {
 		));
         acf_register_block( 
 		array(
+			'name'						=> 'reviews_block',
+			'title'						=> __('Block Reviews', 'hcc'),
+			'description'			=> __('.','hcc'),
+			'render_template'	=> 'template-parts/blocks/reviews_block.php', //source for rendering template
+			'category'				=> 'acf-blocks',
+			'icon'						=> 'format-status',
+			'mode'						=> 'preview',
+			'supports'				=> array( 'align' => false ),
+			// 'post_types'			=> array('post', 'page'),
+		));
+        acf_register_block( 
+		array(
 			'name'						=> 'banner_block',
 			'title'						=> __('Block Banner', 'hcc'),
 			'description'			=> __('.','hcc'),
@@ -134,18 +146,6 @@ function hcc_register_acf_block_types() {
 			'title'						=> __('Block Gallery', 'hcc'),
 			'description'			=> __('.','hcc'),
 			'render_template'	=> 'template-parts/blocks/banner_block.php', //source for rendering template
-			'category'				=> 'acf-blocks',
-			'icon'						=> 'format-status',
-			'mode'						=> 'preview',
-			'supports'				=> array( 'align' => false ),
-			// 'post_types'			=> array('post', 'page'),
-		));
-        acf_register_block( 
-		array(
-			'name'						=> 'table_block',
-			'title'						=> __('Block Table', 'hcc'),
-			'description'			=> __('.','hcc'),
-			'render_template'	=> 'template-parts/blocks/table_block.php', //source for rendering template
 			'category'				=> 'acf-blocks',
 			'icon'						=> 'format-status',
 			'mode'						=> 'preview',

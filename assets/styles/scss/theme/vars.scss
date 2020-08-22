@@ -1,11 +1,54 @@
 /** Colors **/
+$colorStrOne:   var(--colorStrOne);
+$colorStrTwo:   var(--colorStrTwo);
+$colorStrThree: var(--colorStrThree);
+$colorStrFour:  var(--colorStrFour);
+$colorStrFive:  var(--colorStrFive);
+
+$helper-one:   #FFE95D;
+$helper-two:   #FFC65D;
+$helper-three: darken(#7FE553, 5%);
+$helper-four:  #40951B;
+$helper-five:  #8FDDD4;
+$helper-color: $helper-two;
+
 $transparent:       transparent;
 $dark:              #1B1B1B;
 $light:             #ddd;
-$black:             #000;
 $white:             #fff;
-$orange:            #ff8108;
-$helper-color:      #00AFAF;
+$orange:            transparentize( lighten($helper-two, 5%), 0.8 );
+$black:             #000;
+
+$colorOne:   var(--colorOne, $helper-one);
+$colorTwo:   var(--colorTwo, $helper-two); 
+$colorThree: var(--colorThree, $helper-three);
+$colorFour:  var(--colorFour, $helper-four);
+$colorFive:  var(--colorFive, $helper-five);
+
+/** Bootstrap root colors var override **/
+$theme-colors: (
+  primary:   blue,
+  secondary: $helper-five,
+  success:   $helper-three,
+  warning:   darken($helper-one, 10%),
+  info:      $helper-four,
+  danger:    red,
+  dark:      $dark,
+  light:     $light,
+);
+/** End of bootstrap colors override **/
+
+$colors: (
+  whites:  $white,
+  blacks:  $black,
+  darks:   $dark,
+  lightes: $light,
+  helper-one:   $colorOne,
+  helper-two:   $colorTwo,
+  helper-three: $colorThree,
+  helper-four:  $colorFour,
+  helper-five:  $colorFive,
+);
 
 /** Sizes **/
 $oversize: 70px;
@@ -13,6 +56,14 @@ $big: 48px;
 $middle: 35px;
 $middler: 24px;
 $regular: 20px;
+
+$sizes: (
+  oversizes:  $oversize,
+  bigs:       $big,
+  middles:    $middle,
+  middlers:   $middler,
+  regular:    $regular,
+);
 
 /** Font weight **/
 $weight-light:   300;
@@ -22,14 +73,82 @@ $weight-middler: 600;
 $weight-bolder: 700;
 $weight-bold: bold;
 
+$weights: (
+  lights:     $weight-light,
+  lighters:   $weight-lighter,
+  normals:    $weight-normal,
+  middlers:   $weight-middler,
+  bolders:    $weight-bolder,
+  bolds:      $weight-bold,
+);
+
 /** Line-heights **/
 $line-normal: 1;
 $line-middler: 36px;
 $line-middle:  43px;
 $line-larger:  51px;
 
+$line-heights: (
+  normals:   $line-normal,
+  middlers:  $line-middler,
+  middles:   $line-middle,
+  largers:   $line-larger,
+);
+
 /** Font-family **/
 $main-font:      'Montserrat', sans-serif;
 $secondary-font: '', sans-serif;
-$cursive: 'Qwigley';
-$helper-font: 'Calama Regular';
+$cursive:        '';
+$helper-font:    'Calama Regular';
+
+$fonts: (
+  mains:      $main-font,
+  secondares: $secondary-font,
+  cursives:   $cursive,
+  helpers:    $helper-font,
+);
+
+/** Root vars **/
+:root {
+   @each $color, $value in $colors {
+    --hcc-color-#{$color}: #{$value};
+   }
+  
+   @each $size, $value in $sizes {
+    --hcc-size-#{$size}: #{$value};
+   }
+  
+   @each $weight, $value in $weights {
+    --hcc-weight-#{$weight}: #{$value};
+   }
+  
+   @each $height, $value in $line-heights {
+    --hcc-line-#{$height}: #{$value};
+   }
+  
+   @each $font, $value in $fonts {
+    --hcc-font-#{$font}: #{$value};
+   }
+}
+
+/** Bootstrap grid points */
+$grid-breakpoints: (
+  xs:  0,
+  sm:  576px,
+  md:  768px,
+  lg:  992px,
+  xlg: 1024px, // additional custom breakpoint
+  xl:  1230px,
+  xxl: 1400px // additional custom breakpoint
+);
+
+/** Bootstrap z-index variables */
+$zindex-dropdown:          1000 !default;
+$zindex-sticky:            1020 !default;
+$zindex-fixed:             1030 !default;
+$zindex-modal-backdrop:    1040 !default;
+$zindex-modal:             1050 !default;
+$zindex-popover:           1060 !default;
+$zindex-tooltip:           1070 !default;
+
+$breadcrumb-divider: quote("🡪");

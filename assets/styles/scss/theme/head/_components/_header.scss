@@ -4,7 +4,7 @@
   transition: 0.3s;
   z-index: 100;
   
-  @include bg--auto( transparentize( $black, 0.5 ), none, cover, no-repeat );
+  @include bg--auto( transparentize( $dark, 0.5 ), none, cover, no-repeat );
   
   &,
   *,
@@ -159,7 +159,7 @@
   &.sticky{
     position: fixed;
     width: 100%;
-    background-color: transparentize( $black, 0.1 );
+    //background-color: transparentize( $black, 0.1 );
   }
   
   &.absolute {

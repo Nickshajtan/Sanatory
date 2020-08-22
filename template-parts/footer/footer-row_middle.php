@@ -28,7 +28,7 @@ $addresses_check = get_option('options_addresses_display');
 
 $phones_display    = ( is_array( $phones_check ) && in_array('footer', $phones_check ) )    ? true : false; 
 $emails_display    = ( is_array( $emails_check ) && in_array('footer', $emails_check ) )    ? true : false; 
-$addresses_display = ( is_array( $addresses_check ) && in_array('footer', $addresses_check ) ) ? true : false;  
+$addresses_display = ( is_array( $addresses_check ) && in_array('footer', $addresses_check ) ) ? true : false; 
 
 if( $phones && !empty( $phones ) && $phones_display || 
     $emails && !empty( $phones ) && $emails_display || 

@@ -23,7 +23,14 @@ if( have_posts() ) :
                 </div>
               </div>
         </div>
-    <?php endwhile;
+        <?php $flexible = get_field('flexible_content', get_the_ID());
+        if ( $flexible ) :
+                    while (has_sub_field('flexible_content', get_the_ID())) :
+                                   $row_layout_slug = get_row_layout();
+                                   get_template_part('template-parts/flexible/block', $row_layout_slug);
+                    endwhile;
+        endif;
+    endwhile;
 else :
     get_template_part( 'template-parts/content', 'none' );
 endif; 

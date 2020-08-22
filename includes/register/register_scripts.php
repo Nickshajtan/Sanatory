@@ -19,10 +19,10 @@ function hcc_add_editor_styles() {
     add_theme_support( 'editor-style' );
 	add_editor_style( 'editor-styles.css' );
 }
-/*
+
 get_template_part('includes/register/register_scripts/styles', 'header');
 get_template_part('includes/register/register_scripts/scripts', 'main');
-*/
+
 $libs = get_option('hcc-theme-tl-libs-off');
     
 if( $libs !== 1 ) {
@@ -34,11 +34,11 @@ if( $libs !== 1 ) {
       get_template_part('includes/register/register_scripts/libs_include', 'case_syntax');
     }
 }
-/*
+
 get_template_part('includes/register/register_scripts/styles', 'footer');
 get_template_part('includes/register/register_scripts/scripts', 'footer');
 get_template_part('includes/register/register_scripts/deregister');
-*/
+
 //--remove version css, js--//
 add_filter( 'script_loader_src', 'hcc_remove_script_version', 15, 1 );
 add_filter( 'style_loader_src', 'hcc_remove_script_version', 15, 1 );

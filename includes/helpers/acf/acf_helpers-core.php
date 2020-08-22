@@ -32,7 +32,13 @@ function hcc_acf_init() {
             'menu_title'	=> __('General', 'hcc'),
             'parent_slug'	=> $parent['menu_slug'],
         ));
-    
+        
+        // add sub page
+        acf_add_options_sub_page(array(
+            'page_title'	=> __('Price list', 'hcc'),
+            'menu_title'	=> __('Price', 'hcc'),
+            'parent_slug'	=> $parent['menu_slug'],
+        ));
     }
 }
 
@@ -90,8 +96,30 @@ function hcc_get_acf_header( $class = '' ){
 function hcc_get_acf_title( $element, $class = '' ){
             $tag   = $element['tag'];
             $title = wp_kses_post( $element['block_title'] );
-            if (empty($tag)) { $tag = 'div';	};
-            if (empty($title)) { $title = '';	};
+            if (empty($tag)) { $tag = 'div'; };
+            if (empty($title)) { $title = ''; };
+  
+            if (!empty($title) && function_exists('hcc_symb_replace') ) {
+              $title = hcc_symb_replace( $title, '%enter%', '<br />' );
+              $title = hcc_symb_replace( $title, '%color_start%', '<span class="color_el">' );
+              $title = hcc_symb_replace( $title, '%color_end%', '</span>' );
+              $title = hcc_symb_replace( $title, '%start_size%', '<span class="size_el">' );
+              $title = hcc_symb_replace( $title, '%end_size%', '</span>' );
+            }
+            
+            return '<'.$tag.' class="'.$class.'">'. $title .'</'.$tag.'>';    
+}
+/*
+ *  Get acf subtitle with tags
+ *  @param $class return html class of tag element
+ *  @param $element is a parent element 
+ *  Function return first child element with block_title ACF id in $element
+ */    
+function hcc_get_acf_sub_title( $element, $class = '' ){
+            $tag   = $element['sub_tag'];
+            $title = wp_kses_post( $element['block_sub_title'] );
+            if (empty($tag)) { $tag = 'div'; };
+            if (empty($title)) { $title = ''; };
   
             if (!empty($title) && function_exists('hcc_symb_replace') ) {
               $title = hcc_symb_replace( $title, '%enter%', '<br />' );

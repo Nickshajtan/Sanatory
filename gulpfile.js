@@ -717,6 +717,32 @@ gulp.task('copy-dir-libs', function(done) {
 });
 
 /*
+* compile instagram js witheout API
+*/
+gulp.task('inst-script-no-api', function() {
+  return gulp
+  .src('./includes/helpers/instagram/assets/jquery.instagramFeed.js')
+  .pipe(concat('jquery.instagramFeed.min.js'))
+  .pipe(sourcemaps.init())
+  .pipe(uglify())
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest('./assets/public/js/'));
+});
+
+/*
+* compile instagram js with API
+*/
+gulp.task('inst-script-api', function() {
+  return gulp
+  .src('./includes/helpers/instagram/assets/instApi.js')
+  .pipe(concat('instApi.min.js'))
+  .pipe(sourcemaps.init())
+  .pipe(uglify())
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest('./assets/public/js/'));
+});
+
+/*
 *  run task for one time theme core styles & js files compiling
 */
 gulp.task('theme-core', gulp.series('admin-scripts','gtb-scripts'));

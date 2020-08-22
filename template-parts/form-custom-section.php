@@ -1,21 +1,26 @@
 <?php
-  
-  $title    = hcc_get_acf_header() ? hcc_get_acf_header('text-white text-center title') 
-                                   : '<b>' . __('Нет Вашего вопроса? Попробуйте написать нам', 'hcc') . '</b>'; 
-  $subtitle = __('Оставьте свой вопрос и мы ответим вам как можно скорее', 'hcc');
+  /*
+   * Section with custom contact form
+   *
+   */
+  $header       = $title ? $title : '<b>' . __('Нет Вашего вопроса? Попробуйте написать нам', 'hcc') . '</b>'; 
+  $subheader    = $subtitle ? $subtitle : '<b>' . __('Оставьте свой вопрос и мы ответим вам как можно скорее', 'hcc') . '</b>';
+  $block_id_str = str_shuffle('0123456789abcdefghijklmnopqrstuvwxyz');
 ?>
-<section class="cf cf-section">
+<section id="<?php echo $blockname . '-' . $block_id_str; ?>" class="cf cf-section">
     <div class="container">
         <div class="row">
             <div class="col-12 justify-content-center align-items-center d-flex flex-column cf-section__header">
-               
-                <?php if( false ) : ?>
-                <strong class="text-center text-white"><span class="text-white"><?php echo $subtitle; ?></span></strong>
-                <?php endif; ?>
-                
+                <?php if( $header ) : ?>
                 <div class="text-center text-white d-flex justify-content-center cf-section__header__title">
-                    <?php echo $title; ?>
+                    <?php echo $header; ?>
                 </div>
+                <?php endif; ?>
+                <?php if( $subheader ) : ?>
+                   <div class="text-center text-white d-flex justify-content-center cf-section__header__subtitle">
+                      <?php echo $subheader; ?>
+                   </div>
+                <?php endif; ?>
                 
             </div>
             

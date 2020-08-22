@@ -15,16 +15,16 @@ if(have_posts()) : while ( have_posts() ) : the_post();
           $content = apply_filters( 'the_content', $content );
 
           if ( $content ) : ?>
-            <div class="container-fluid site-container">
-              <div class="row">
-                <div class="col-12">
-                  <?php echo $content; ?>
-                </div>
-              </div>
-            </div>
-          <?php else : 
-                get_template_part('template-parts/content', 'none');
-          endif;
+               <section class="content-wrapper privacy-page d-flex align-items-center justify-content-center">
+                  <div class="container">
+                    <?php echo $content; ?>
+                  </div>
+                </section>
+          <?php else : ?>
+                <section class="content-wrapper no-content d-flex align-items-center justify-content-center">
+                  <?php get_template_part('template-parts/content', 'none'); ?>
+                </section>
+          <?php endif;
 
 endwhile; endif;
 get_footer();

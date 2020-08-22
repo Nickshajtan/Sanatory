@@ -9,8 +9,8 @@ global $post;
 
 if(have_posts()) : while(have_posts()) : the_post();
          
-          if (get_field('flexible_content')) :
-                    while (has_sub_field('flexible_content')) :
+          if (get_field('flexible_content', get_the_ID())) :
+                    while (has_sub_field('flexible_content', get_the_ID())) :
                                    $row_layout_slug = get_row_layout();
                                    get_template_part('template-parts/flexible', $row_layout_slug);
                     endwhile;
