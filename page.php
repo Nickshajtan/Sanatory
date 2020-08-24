@@ -16,13 +16,13 @@ get_header();
 if( have_posts() ) : 
     while ( have_posts() ) :
         the_post(); ?>
-        <div class="container-fluid site-container">
+        <section id="content" class="container-fluid site-container">
               <div class="row">
                 <div class="col-12">
                   <?php the_content(); ?>
                 </div>
               </div>
-        </div>
+        </section>
     <?php endwhile;
     $flexible = get_field('flexible_content', get_the_ID());
         if ( $flexible ) :

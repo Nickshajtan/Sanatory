@@ -176,6 +176,18 @@ function hcc_register_acf_block_types() {
 			'supports'				=> array( 'align' => false ),
 			// 'post_types'			=> array('post', 'page'),
 		));
+        acf_register_block( 
+		array(
+			'name'						=> 'table_block',
+			'title'						=> __('Block Table', 'hcc'),
+			'description'			=> __('.','hcc'),
+			'render_template'	=> 'template-parts/blocks/table_block.php', //source for rendering template
+			'category'				=> 'acf-blocks',
+			'icon'						=> 'format-status',
+			'mode'						=> 'preview',
+			'supports'				=> array( 'align' => false ),
+			// 'post_types'			=> array('post', 'page'),
+		));
         
 }
 

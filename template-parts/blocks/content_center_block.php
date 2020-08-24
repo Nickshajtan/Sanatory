@@ -8,8 +8,8 @@ $blockname = 'text_block';
 $class_mod = '_center-position';
 $block_id  = $blockname . '-block';
 $block     = get_field('content_center_block');
-$title     = hcc_get_acf_title( $block, 'title text-white text-center' );
-$subtitle  = hcc_get_acf_sub_title($block, 'subtitle text-white text-center');
+$title     = hcc_get_acf_title( $block, 'title text-center' );
+$subtitle  = hcc_get_acf_sub_title($block, 'subtitle text-center');
 $content   = wp_kses_post($block['text']);
 
 $blockName = 'text_block';

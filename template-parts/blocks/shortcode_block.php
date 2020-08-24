@@ -6,8 +6,8 @@
 
 $blockname = 'shortcode_block';
 $block     = get_field('shortcode_block');
-$title     = hcc_get_acf_title( $block, 'title text-white text-center' );
-$subtitle  = hcc_get_acf_sub_title($block, 'subtitle text-white text-center');
+$title     = hcc_get_acf_title( $block, 'title text-center' );
+$subtitle  = hcc_get_acf_sub_title($block, 'subtitle text-center');
 $shortcode = trim( $block['shortcode'] );
 
 $blockName = 'shortcode_block';
