@@ -58,6 +58,18 @@ function hcc_register_acf_block_types() {
 		));
         acf_register_block( 
 		array(
+			'name'						=> 'cards_block',
+			'title'						=> __('Block Cards', 'hcc'),
+			'description'			=> __('.','hcc'),
+			'render_template'	=> 'template-parts/blocks/cards_block.php', //source for rendering template
+			'category'				=> 'acf-blocks',
+			'icon'						=> 'format-status',
+			'mode'						=> 'preview',
+			'supports'				=> array( 'align' => false ),
+			// 'post_types'			=> array('post', 'page'),
+		));
+        acf_register_block( 
+		array(
 			'name'						=> 'about_block',
 			'title'						=> __('Block About', 'hcc'),
 			'description'			=> __('.','hcc'),
@@ -110,6 +122,18 @@ function hcc_register_acf_block_types() {
 			'title'						=> __('Block Products', 'hcc'),
 			'description'			=> __('.','hcc'),
 			'render_template'	=> 'template-parts/blocks/product_block.php', //source for rendering template
+			'category'				=> 'acf-blocks',
+			'icon'						=> 'format-status',
+			'mode'						=> 'preview',
+			'supports'				=> array( 'align' => false ),
+			// 'post_types'			=> array('post', 'page'),
+		));
+        acf_register_block( 
+		array(
+			'name'						=> 'shares_block',
+			'title'						=> __('Block Shares', 'hcc'),
+			'description'			=> __('.','hcc'),
+			'render_template'	=> 'template-parts/blocks/shares_block.php', //source for rendering template
 			'category'				=> 'acf-blocks',
 			'icon'						=> 'format-status',
 			'mode'						=> 'preview',

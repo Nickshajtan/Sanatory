@@ -1,8 +1,10 @@
 html,
 body {
-  background-color: $black;
+  background-color: $colorTwo;
   background-attachment: fixed;
 }
+
+@include editor--elements;
 
 @media (min-width: 1200px) {
   .container {
@@ -17,7 +19,7 @@ body {
 }
 
 #content {
-  min-height: calc(100vh - 375px);
+  min-height: calc(100vh - 250px);
   background-color: $transparent;
 }
 
@@ -32,8 +34,23 @@ section {
   position: relative;
   padding: 40px 0;
   
+  &:first-child {
+    margin-top: 80px;
+  }
+  
   @include mq('extra-tablet', min) {
     padding: 80px 0;
+    
+    &:first-child {
+      margin-top: 220px;
+    }
+  }
+  
+  *.title {
+    &, 
+    * {
+      @include editor--headers(true);
+    }
   }
 }
 

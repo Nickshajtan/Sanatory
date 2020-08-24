@@ -12,12 +12,12 @@
         <div class="row">
             <div class="col-12 justify-content-center align-items-center d-flex flex-column cf-section__header">
                 <?php if( $header ) : ?>
-                <div class="text-center text-white d-flex justify-content-center cf-section__header__title">
+                <div class="text-center d-flex justify-content-center cf-section__header__title">
                     <?php echo $header; ?>
                 </div>
                 <?php endif; ?>
                 <?php if( $subheader ) : ?>
-                   <div class="text-center text-white d-flex justify-content-center cf-section__header__subtitle">
+                   <div class="text-center d-flex justify-content-center cf-section__header__subtitle">
                       <?php echo $subheader; ?>
                    </div>
                 <?php endif; ?>

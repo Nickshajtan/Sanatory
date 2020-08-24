@@ -25,6 +25,9 @@ $colorThree: var(--colorThree, $helper-three);
 $colorFour:  var(--colorFour, $helper-four);
 $colorFive:  var(--colorFive, $helper-five);
 
+$colorText:    var(--colorText, $dark);
+$colorHeaders: var(--colorHeaders, $dark);
+
 /** Bootstrap root colors var override **/
 $theme-colors: (
   primary:   blue,
@@ -53,7 +56,7 @@ $colors: (
 /** Sizes **/
 $oversize: 70px;
 $big: 48px;
-$middle: 35px;
+$middle: 2rem;
 $middler: 24px;
 $regular: 20px;
 
@@ -96,10 +99,10 @@ $line-heights: (
 );
 
 /** Font-family **/
-$main-font:      'Montserrat', sans-serif;
-$secondary-font: '', sans-serif;
-$cursive:        '';
-$helper-font:    'Calama Regular';
+$main-font:      var(--fontsOne, 'Montserrat'), sans-serif;
+$secondary-font: var(--fontsTwo, 'Oswald'), sans-serif;
+$cursive:        'inherit';
+$helper-font:    var(--fontsThree, 'Roboto');
 
 $fonts: (
   mains:      $main-font,

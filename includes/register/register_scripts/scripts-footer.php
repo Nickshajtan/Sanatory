@@ -7,8 +7,10 @@ add_action( 'get_footer', 'hcc_add_footer_scripts' );
 function hcc_add_footer_scripts() {
     //Including Google API script
     $key = trim( get_field('google_api_key', 'options') );
-    wp_register_script( 'google_map_js', wp_normalize_path( '//maps.googleapis.com/maps/api/js?key=' . $key ), array('jquery'), '', true );
-    wp_enqueue_script( 'google_map_js');
+    if( !empty( $key ) ) :
+      wp_register_script( 'google_map_js', wp_normalize_path( '//maps.googleapis.com/maps/api/js?key=' . $key ), array('jquery'), '', true );
+      wp_enqueue_script( 'google_map_js');
+    endif;
     //If you want to enable independently 
     /*wp_register_script( 'custom_google_map_js', THEME_URI . '/assets/js/theme/custom-map.js', array('jquery'), '', true );
     wp_enqueue_script( 'custom_google_map_js');*/

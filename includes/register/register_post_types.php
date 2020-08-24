@@ -52,7 +52,7 @@ function hcc_cpt_manual_register() {
     
       $labels = array(
                 "name" => __($main_name, "hcc"),
-                "singular_name" => __("Event", "hcc"),
+                "singular_name" => __($main_name, "hcc"),
                 "menu_name" => __($main_name, "hcc"),
                 "all_items" => __("All " . $type_name, "hcc"),
                 "add_new" => __("Add " . $singular_name, "hcc"),
@@ -75,8 +75,24 @@ function hcc_cpt_manual_register() {
   $type_name = 'shares';
   
   if( !post_type_exists( $type_name ) || !hcc_isset_post_type( $type_name, $post_types ) ) {
-        $labels = hcc_labels_helper( 'Акции' );
 
+        $labels = array(
+                "name" => __('Акции', "hcc"),
+                "singular_name" => __('Акция', "hcc"),
+                "menu_name" => __('Акции', "hcc"),
+                "all_items" => __("Все " . 'Акции', "hcc"),
+                "add_new" => __("Добавить " . 'Акцию', "hcc"),
+                "add_new_item" => __("Добавить " . 'Акцию', "hcc"),
+                "edit" => __("Редактировать", "hcc"),
+                "edit_item" => __("Редактировать", "hcc"),
+                "new_item" => __("Новая " . 'Акция', "hcc"),
+                "view" => __("Смотреть", "hcc"),
+                "view_item" => __("Смотреть " . 'Акцию', "hcc"),
+                "search_items" => __("Искать " . 'Акцию', "hcc"),
+                "not_found" => __("Не найдено", "hcc"),
+                "not_found_in_trash" => __("Не найдено", "hcc"),
+       );
+    
         $args = array(
                 "labels" => $labels,
                 "description" => "",
@@ -105,9 +121,71 @@ function hcc_cpt_manual_register() {
   $type_name = 'reviews';  
   
   if( !post_type_exists( $type_name ) || !hcc_isset_post_type( $type_name, $post_types ) ) {
-        $labels = hcc_labels_helper( 'Отзывы' );
+        
+          $labels = array(
+                "name" => __('Отзывы', "hcc"),
+                "singular_name" => __('Отзыв', "hcc"),
+                "menu_name" => __('Отзывы', "hcc"),
+                "all_items" => __("Все " . 'Отзывы', "hcc"),
+                "add_new" => __("Добавить " . 'Отзыв', "hcc"),
+                "add_new_item" => __("Добавить " . 'Отзыв', "hcc"),
+                "edit" => __("Редактировать", "hcc"),
+                "edit_item" => __("Редактировать", "hcc"),
+                "new_item" => __("Новый  " . 'Отзыв', "hcc"),
+                "view" => __("Смотреть", "hcc"),
+                "view_item" => __("Смотреть " . 'Отзыв', "hcc"),
+                "search_items" => __("Искать " . 'Отзыв', "hcc"),
+                "not_found" => __("Не найдено", "hcc"),
+                "not_found_in_trash" => __("Не найдено", "hcc"),
+          );
+    
+          $args = array(
+                "labels" => $labels,
+                "description" => "",
+                "public" => true,
+                "show_ui" => true,
+                "has_archive" => true,
+                "show_in_menu" => true,
+                "exclude_from_search" => false,
+                "capability_type" => "post",
+                "map_meta_cap" => true,
+                "hierarchical" => false,
+                "rewrite" => array( 'pages' => true, 'with_front' => true, ),
+                "query_var" => true,
+                "menu_position" => 4,
+                "menu_icon" => "dashicons-admin-post",
+                "supports" => array( "title", "editor", "custom-fields", "revisions", "thumbnail", "post-formats" ),
+                "can_export" => true,
+           );
 
-        $args = array(
+          if( !is_null( $labels ) && is_array( $labels ) && !is_null( $args ) && is_array( $args ) ) {
+            register_post_type( $type_name, $args );
+          }
+  }
+  
+  // reviews
+  $type_name = 'slider';  
+  
+  if( !post_type_exists( $type_name ) || !hcc_isset_post_type( $type_name, $post_types ) ) {
+        
+          $labels = array(
+                "name" => __('Слайды', "hcc"),
+                "singular_name" => __('Слайд', "hcc"),
+                "menu_name" => __('Слайдер', "hcc"),
+                "all_items" => __("Все " . 'Слайды', "hcc"),
+                "add_new" => __("Добавить ", "hcc"),
+                "add_new_item" => __("Добавить ", "hcc"),
+                "edit" => __("Редактировать", "hcc"),
+                "edit_item" => __("Редактировать", "hcc"),
+                "new_item" => __("Новый  ", "hcc"),
+                "view" => __("Смотреть", "hcc"),
+                "view_item" => __("Смотреть ", "hcc"),
+                "search_items" => __("Искать " , "hcc"),
+                "not_found" => __("Не найдено", "hcc"),
+                "not_found_in_trash" => __("Не найдено", "hcc"),
+          );
+    
+          $args = array(
                 "labels" => $labels,
                 "description" => "",
                 "public" => true,

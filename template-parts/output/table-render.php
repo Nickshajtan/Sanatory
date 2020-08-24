@@ -6,20 +6,20 @@
  */
 
 $block_id_str = str_shuffle('0123456789abcdefghijklmnopqrstuvwxyz');
-$output_id    = (!empty( $id )) ? $id : $blockname . '-' . $block_id_str; 
+$output_id    = (!empty( $id ) && !is_null( $id ) ) ? $id : $blockname . '-' . $block_id_str; 
 $output_class = ( !empty( $className ) ) ? $className : $blockname . '-' . $block_id;
 $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  . '-section'; ?>
 
 <section id="<?php echo $output_id; ?>" class="<?php echo $output_class . ' ' . $bem_section; ?>">
   <div class="container">
-    <?php if( !empty( $title ) || !empty( $subtitle ) ) : ?>
+    <?php if( $title || $subtitle ) : ?>
       <div class="row">
-        <?php if( !empty( $title ) ) : ?>
+        <?php if( $title !== false ) : ?>
           <div class="col-12 <?php echo $bem_section . ' ' . '__title'; ?>">
             <?php echo $title; ?>
           </div>
         <?php endif; 
-        if( !empty( $title ) ) : ?>
+        if( $subtitle !== false  ) : ?>
           <div class="col-12 <?php echo $bem_section . ' ' . '__subtitle'; ?>">
             <?php echo $subtitle; ?>
           </div>
@@ -34,17 +34,20 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
     <div class="row <?php echo $bem_section . ' ' . '__table'; ?> table-responsive-lg">
       <table class="col-12 table table-borded table-hover table-responsive-lg">
        <?php if( !empty( $caption ) ) : ?>
-          <caption><?php echo $caption; ?></caption>
+          <caption class="sr-only"><?php echo $caption; ?></caption>
        <?php endif;
        if( !empty( $header ) ) : ?>
         <thead class="thead-dark">
           <tr>
-            <?php foreach( $header as $th ) :
- 
+            <?php $count = 0;
+            foreach( $header as $th ) :
+          
+                        echo ( $count == 0 ) ? '<th>#</th>' : '';
                         echo '<th>';
                             echo $th['c'];
                         echo '</th>';
             
+            $count++;
             endforeach; ?>
           </tr>
         </thead>

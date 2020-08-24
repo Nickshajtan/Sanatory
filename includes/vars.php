@@ -3,7 +3,7 @@
  * Theme defenitions
  *
  */
-define( 'SITE_FOR_CLIENT', false );
+define( 'SITE_FOR_CLIENT', true );
 // Core
 if( !is_admin() && !defined( 'DISALLOW_FILE_EDIT' ) ){
     define( 'DISALLOW_FILE_EDIT', true );

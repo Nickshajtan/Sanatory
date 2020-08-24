@@ -6,7 +6,7 @@
 
 $block_id_str = str_shuffle('0123456789abcdefghijklmnopqrstuvwxyz');
 $block_id_str = str_shuffle('0123456789abcdefghijklmnopqrstuvwxyz'); 
-$output_id    = (!empty( $id )) ? $id : $blockname . '-' . $block_id_str; 
+$output_id    = (!empty( $id ) && !is_null( $id )) ? $id : $blockname . '-' . $block_id_str; 
 $output_class = ( !empty( $className ) ) ? $className : $blockname . '-' . $block_id;
 $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  . '-section';
 

@@ -24,13 +24,16 @@ jQuery( document ).ready(function($) {
     FeedBackButton(); //Enable contact button
     SlickCarousel(); //  Slick jQuery slider
     SectionCount(); // Count sections
-    SectionOlWrapper();
+    SectionListWrapper();
     slideDown(); // Slide to next section
     fancyboxInitial(); //Including Fancybox
     waterweellCarousel(); //  Waterweell jQuery slider
     overlayHide();
     mobileMenu();
 });
+function SectionListWrapper() {
+  $('section').find('li').wrapInner("<span></span>");
+}
      
 // Preloader
 function Loader(){

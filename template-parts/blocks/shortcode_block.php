@@ -27,5 +27,5 @@ if( !empty($block['align']) ) {
 }
 
 if( !empty( $shortcode ) ) {
-  @include( wp_normalize_path(__DIR__ .'/../output/shortcode.php'));
+  @include( wp_normalize_path(__DIR__ .'/../output/shortcode-render.php'));
 }

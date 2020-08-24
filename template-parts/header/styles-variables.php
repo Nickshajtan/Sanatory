@@ -67,6 +67,9 @@ function hcc_styles_hexToRgb($hex, $return_string = true, $return_value = false)
     --colorThree: <?php echo hcc_styles_hexToRgb('#ddd', true); ?>;
     --colorFour:  <?php echo hcc_styles_hexToRgb('#333', true); ?>;
     --colorFive:  <?php echo hcc_styles_hexToRgb('#333', true); ?>;
+    
+    --colorText:     <?php echo hcc_styles_hexToRgb('#1B1B1B', true); ?>;
+    --colorHeaders:  <?php echo hcc_styles_hexToRgb('#1B1B1B', true); ?>;
     /*** Colors End ***/
     /*** Color RGB Strings ***/
     --colorStrOne:   <?php echo hcc_styles_hexToRgb('#000', true, true); ?>;
@@ -75,5 +78,10 @@ function hcc_styles_hexToRgb($hex, $return_string = true, $return_value = false)
     --colorStrFour:  <?php echo hcc_styles_hexToRgb('#333', true, true); ?>;
     --colorStrFive:  <?php echo hcc_styles_hexToRgb('#333', true, true); ?>;
     /*** Color RGB Strings End ***/
+    /*** Fonts ***/
+    --fontsOne:   'Montserrat';
+    --fontsTwo:   'Oswald';
+    --fontsThree: 'Roboto';
+    /*** Fonts End ***/
   }
 </style>

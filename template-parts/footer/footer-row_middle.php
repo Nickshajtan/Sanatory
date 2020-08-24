@@ -42,9 +42,14 @@ if( $phones && !empty( $phones ) && $phones_display ||
                                           <?php foreach( $phones as $phone ) : ?>
                                               <?php $tel  = sanitize_text_field( trim( $phone['phone_num'] ) );
                                                     $href = preg_replace( '~[^0-9]+~', '', $tel ); 
+                                                    $icon_path  = '/assets/public/img/icons/proto-telephone.svg';
+                                                    $icon_src   = hcc_isset_img( dirname(__FILE__), '../..', $icon_path );
                                               if( !empty( $tel ) ) : ?>
-                                                  <a href="tel:<?php echo $href; ?>" class="d-flex align-items-end justify-content-end ml-auto link_el">
-                                                      <span class="icon"></span><span class="body"><?php echo $tel; ?></span>
+                                                  <a href="tel:<?php echo $href; ?>" class="d-flex align-items-center justify-content-center ml-auto link_el">
+                                                      <?php if( $icon_src !== false ) : ?>
+                                                        <img src="<?php echo $icon_src; ?>" alt="<?php echo __('Phone icon'); ?>" title="<?php echo __('Phone icon') . '|' . SITE_NAME; ?>" class="icon">
+                                                      <?php endif; ?>
+                                                      <span class="body"><?php echo $tel; ?></span>
                                                   </a>
                                               <?php endif; ?>
                                           <?php endforeach; ?>
@@ -56,9 +61,14 @@ if( $phones && !empty( $phones ) && $phones_display ||
                                 <div class="w-100 emails">
                                           <?php foreach( $emails as $email ) : ?>
                                               <?php $email = wp_kses_post( trim( $email['email'] ) ); 
+                                                    $icon_path  = '/assets/public/img/icons/proto-mail.svg';
+                                                    $icon_src   = hcc_isset_img( dirname(__FILE__), '../..', $icon_path );
                                               if( !empty( $email ) ) : ?>
-                                                  <a href="mailto:<?php echo $email; ?>" class="d-flex align-items-end justify-content-end ml-auto link_el">
-                                                      <span class="icon"></span><span class="body"><?php echo $email; ?></span>
+                                                  <a href="mailto:<?php echo $email; ?>" class="d-flex align-items-center justify-content-center ml-auto link_el">
+                                                      <?php if( $icon_src !== false ) : ?>
+                                                          <img src="<?php echo $icon_src; ?>" alt="<?php echo __('Mail icon'); ?>" title="<?php echo __('Mail icon') . '|' . SITE_NAME; ?>" class="icon">
+                                                      <?php endif; ?>
+                                                      <span class="body"><?php echo $email; ?></span>
                                                   </a>
                                               <?php endif; ?>
                                           <?php endforeach; ?>
@@ -71,9 +81,14 @@ if( $phones && !empty( $phones ) && $phones_display ||
                                             <?php foreach( $addresses as $adres ) : ?>
                                                 <?php $adress = wp_kses_post( trim( $adres['adress'] ) );
                                                 $href = esc_url( wp_kses_post( trim( $adres['g_href'] ) ) ); 
+                                                $icon_path  = '/assets/public/img/icons/location-64.png';
+                                                $icon_src   = hcc_isset_img( dirname(__FILE__), '../..', $icon_path );
                                                 if( !empty( $adress ) ) : ?>
-                                                    <a href="<?php echo ( !empty( $href )  ) ? $href : '#'; ?>" target="_blank" rel="nofollow" class="d-flex align-items-end justify-content-end ml-auto link_el">
-                                                        <span class="icon"></span><span class="body"><?php echo $adress; ?></span>
+                                                    <a href="<?php echo ( !empty( $href )  ) ? $href : '#'; ?>" target="_blank" rel="nofollow" class="d-flex align-items-center justify-content-center ml-auto link_el">
+                                                        <?php if( $icon_src !== false ) : ?>
+                                                          <img src="<?php echo $icon_src; ?>" alt="<?php echo __('Geo icon'); ?>" title="<?php echo __('Geo icon') . '|' . SITE_NAME; ?>" class="icon">
+                                                      <?php endif; ?>
+                                                      <span class="body"><?php echo $adress; ?></span>
                                                     </a>
                                                 <?php endif; ?>
                                             <?php endforeach; ?>

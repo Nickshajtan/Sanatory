@@ -6,30 +6,32 @@
  */ 
 
 $block_id_str = str_shuffle('0123456789abcdefghijklmnopqrstuvwxyz');
-$output_id    = (!empty( $id )) ? $id : $blockname . '-' . $block_id_str; 
+$output_id    = (!empty( $id ) && !is_null( $id ) ) ? $id : $blockname . '-' . $block_id_str; 
 $output_class = ( !empty( $className ) ) ? $className : $blockname . '-' . $block_id;
 $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  . '-section'; ?>
 
 <section id="<?php echo $output_id; ?>" class="<?php echo $output_class . ' ' . $bem_section; ?>">
   <div class="container">
-    <?php if( !empty( $title ) || !empty( $subtitle ) ) : ?>
+    <?php if( $title || $subtitle ) : ?>
     <div class="row">
-       <?php if( $title ) : ?>
+       <?php if( $title !== false ) : ?>
          <div class="col-12 <?php echo $bem_section . ' ' . '__title'; ?>">
            <?php echo $title; ?>
          </div>
        <?php endif;
-       if( $subtitle ) : ?>
+       if( $subtitle !== false ) : ?>
          <div class="col-12 <?php echo $bem_section . ' ' . '__subtitle'; ?>">
            <?php echo $subtitle; ?>
          </div>
        <?php endif; ?>
     </div>
     <?php endif; ?>
-    <div class="row d-flex justify-content-center align-items-center flex-column <?php echo $bem_section . ' ' . '__list'; ?>">
-     
-     <?php if( is_array( $shares ) ) :
-           $count = 1;
+  </div>
+  
+  <?php if( is_array( $shares ) || is_object( $shares ) && !is_null( $shares )) : ?>
+  <div class="container-fluid">
+    <div class="row-fluid d-flex justify-content-center align-items-center flex-row flex-wrap <?php echo $bem_section . ' ' . '__list'; ?>">
+           <?php $count = 1;
            foreach( $shares as $post ) :
              setup_postdata($post); 
 
@@ -40,7 +42,7 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
              $image     = get_the_post_thumbnail( $post->ID, 'full' );
             
            ?>
-   <div class="col-12 d-flex justify-content-center align-items-center flex-column <?php echo $bem_section . ' ' . '__list__item share' . $count; ?>">
+   <div class="col-12 col-md-6 col-xl-4 d-flex justify-content-center align-items-center flex-column <?php echo $bem_section . ' ' . '__list__item share' . $count; ?>">
       <div class="row">
         <?php if( $image ) : ?>
           <div class="col-12 <?php echo $bem_section . ' ' . '__list__item__img'; ?>">
@@ -59,13 +61,12 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
         <?php endif; ?>
       </div>
    </div>
-           <?php $count++; endforeach; 
-     endif; ?>
-      <?php endif; ?>
-      
+           <?php $count++; 
+      endforeach; ?>
     </div>
   </div>
+  <?php endif; ?>
+  
 </section>
 <?php $post = $tmp_post;
       wp_reset_postdata(); ?>
-<?php endif; ?>

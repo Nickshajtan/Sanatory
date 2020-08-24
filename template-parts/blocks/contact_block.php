@@ -6,8 +6,8 @@
 
 $blockname = 'contact_block';
 $block     = get_field('contact_block');
-$title     = hcc_get_acf_title( $block, 'title text-white text-center' );
-$subtitle  = hcc_get_acf_sub_title($block, 'subtitle text-white text-center');
+$title     = hcc_get_acf_title( $block, 'title text-center' );
+$subtitle  = hcc_get_acf_sub_title($block, 'subtitle text-center');
 
 $blockName = 'contact_block';
 // Create id attribute allowing for custom "anchor" value.

@@ -1,13 +1,13 @@
 /*** Validation ***/
 %was-validated {
   .form-element-validation:valid{
-      box-shadow: 0 0 5px $helper-color;
-      border-color: $white;
+      box-shadow: 0 0 5px forestgreen;
+      border-color: forestgreen;
   }
   
   .form-element-validation:invalid{
-      border-color: $helper-color;
-      box-shadow: 0 0 5px $helper-color;
+      border-color: darkred;
+      box-shadow: 0 0 5px darkred;
   }
   
   input:invalid, textarea:invalid, 
@@ -100,7 +100,7 @@
       }
       
       &.valid-warning-feedback{
-        color: $white;
+        color: darkorange;
       }
       
       &.invalid-feedback{
@@ -130,18 +130,18 @@
             &:not( :last-child ) {
               
                 background: 0 0;
-                border-color: $white;
+                border-color: $colorText;
                 border-width: 1px;
                 border-radius: 0;
                 padding: 10px 15px;
-                color: $white;
+                color: $colorText;
                 box-shadow: 0 0 5px $transparent;
               
                 &:hover, 
                 &:focus {
                     outline: none;
                     box-shadow: none;
-                    border-color: $helper-color;
+                    border-color: $colorFive;
                     background: 0 0;
                     color: #fff;
                 }   
@@ -150,11 +150,11 @@
     
         &.element-was-validated:valid{
             box-shadow: 0 0 5px forestgreen;
-            border-color: $white;
+            border-color: $colorThree;
         }
     
         &.element-was-validated:invalid{
-            border-color: $helper-color;
+            border-color: $colorFive;
             box-shadow: 0 0 5px darkred;
         }
     }

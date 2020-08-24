@@ -14,13 +14,13 @@ $bem_mode_align   = (!empty( $bem_mode_align ) )  ? $bem_mode_align : ''; ?>
 
 <section id="<?php echo $output_id; ?>" class="d-flex justify-content-center flex-column <?php echo $output_class . ' ' . $bem_section . ' ' .$bem_mode_height . ' ' . $bem_mode_align; ?>" <?php if( $bg_type === 'image' ) : ?> style="background-image: url('<?php echo $bg_url; ?>);"<?php endif; ?>>
   <div class="container-fluid">
-    <div class="row-fluid d-flex align-items-center justify-content-<?php echo $align; ?>">
-      <?php if( !empty( $title ) ) : ?>
+    <div class="row-fluid d-flex align-items-center justify-content-<?php echo $align; ?> flex-column">
+      <?php if( $title !== false ) : ?>
         <div class="col-12 <?php echo $bem_section . '__title'; ?>">
           <?php echo $title; ?>
         </div>
       <?php endif; 
-      if( !empty( $subtitle ) ) : ?>
+      if( !empty( $subtitle !== false ) ) : ?>
         <div class="col-12 <?php echo $bem_section . '__subtitle'; ?>">
           <?php echo $subtitle; ?>
         </div>

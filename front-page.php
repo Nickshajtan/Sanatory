@@ -16,9 +16,9 @@ get_header();
 if( have_posts() ) : 
     while ( have_posts() ) :
         the_post(); ?>
-        <div class="container-fluid site-container">
+        <div class="container-fluid site-container page_front page">
               <div class="row">
-                <div class="col-12">
+                <div class="col-12 page__content page_front__content">
                   <?php the_content(); ?>
                 </div>
               </div>
@@ -30,7 +30,7 @@ if( have_posts() ) :
                                    $row_layout_slug = get_row_layout();
                                    get_template_part('template-parts/flexible/block', $row_layout_slug);
                     endwhile;
-        endif;
+    endif;
 else :
     get_template_part( 'template-parts/content', 'none' );
 endif; 

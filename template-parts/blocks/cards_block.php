@@ -1,16 +1,21 @@
 <?php
 /*
- * Gutenberg block with reviews cpt cycle
+ * Gutenberg block with cards
  *
  */
 
-$blockname = 'slider';
+$blockname = 'cards_block';
 $block_id  = $blockname . '-block';
 $block_id  = str_replace('_', '-', $block_id);
 $blockname = str_replace('_', '-', $blockname);
-$block     = get_sub_field('slider');
+$block     = get_field('cards_block');
+$title     = hcc_get_acf_title( $block, 'title text-left' );
+$subtitle  = hcc_get_acf_sub_title($block, 'subtitle text-center');
+$text      = wp_kses_post( $block['text'] );
+$columns   = trim( $block['columns'] );
+$cycle     = $block['cycle'];
 
-$blockName = 'slider';
+$blockName = 'cards_block';
 // Create id attribute allowing for custom "anchor" value.
 $id = $blockName.'-' . $block['id'];
 if( !empty($block['anchor']) ) {
@@ -26,18 +31,6 @@ if( !empty($block['align']) ) {
     $className .= ' align' . $block['align'];
 }
 
-$title     = hcc_get_acf_title( $block, 'title text-left' );
-$subtitle  = hcc_get_acf_sub_title($block, 'subtitle text-left');
-
-$args = array(
-                'post_type'        => 'slider',
-                'orderby'          => 'status',
-                'order'            => 'ASC',
-);
-global $post;
-$tmp_post = $post; 
-$slides   = get_posts( $args );
-
-if( $block ) :
-  @include( wp_normalize_path(__DIR__ .'/../output/slider-render.php'));
-endif;
+if( !empty( $block ) ) {
+  @include( wp_normalize_path(__DIR__ .'/../output/cards-render.php'));
+}

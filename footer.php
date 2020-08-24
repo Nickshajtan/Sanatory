@@ -27,8 +27,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly  ?>
                 get_template_part('template-parts/modals/message', 'error');
                 /*** Custom contact form Modal ***/
                 get_template_part('template-parts/modals/modal', 'custom_form');
-                /*** Custom modal via Remodal ***/
-                get_template_part('template-parts/modals/modal', 'custom_remodal');
                 /*** Custom fixed contact us button ***/
                 get_template_part('template-parts/widgets/fixed', 'custom_ctus_btn');
               ?>  
@@ -38,9 +36,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly  ?>
         <?php //get_template_part('template-parts/widgets', 'fixed'); ?>
         
         <div class="overlay"></div>
-        <?php wp_footer(); ?>
+        <?php wp_footer();
+        /*** Custom modal via Remodal ***/
+        get_template_part('template-parts/modals/modal', 'custom_remodal');
         
-        <?php $browsersync = get_option('hcc-theme-tl-reload', false); 
+        $browsersync = get_option('hcc-theme-tl-reload', false); 
         if( $browsersync === true ) : ?>
             <script id="__bs_script__">//<![CDATA[
                 document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.23.6'><\/script>".replace("HOST", location.hostname));

@@ -1,7 +1,7 @@
 @mixin editor--elements {
   
   * {
-   @include font-source-sans( $middler, $white, normal, $line-middler - 2px, $main-font); 
+    @include font-source-sans( $middler, $colorText, normal, 1.5, $main-font); 
   }
   
   @for $i from 6 through 1 {
@@ -22,6 +22,7 @@
   }
   
   i,
+  em,
   blockquote {
     font-style: italic;
   }
@@ -29,27 +30,53 @@
   ol {
     &,
     li {
-      list-style: decimal;
       list-style-position: inside;
-      color: $helper-color;
+      color: $colorThree;
+      margin-bottom: 14px;
     }
     
     li>span {
-      color: $white;
+      color: $colorText;
+      padding-left: 15px;
+    }
+    
+    &,
+    &:not(.wp-submenu) {
+      margin: 0;
+      padding: 0;
+      list-style: decimal;
+      padding-bottom: 24px;
     }
   }
   
   ul {
     &,
-    li,
-    li>span{
-      list-style: circle;
+    li {
       list-style-position: outside;
-      list-style-image: url(../img/icons/proto-marker.svg);
+      color: $colorThree; 
+      margin-bottom: 14px;
+    }
+    
+    li>span {
+      color: $colorText;
+      padding-left: 15px;
+      display: block;
+    }
+    
+    &,
+    &:not(.wp-submenu) {
+      margin: 0;
+      padding: 0;
+      padding-left: 20px;
+      list-style: inherit;
+      padding-bottom: 24px;
     }
   }
   
   a {
+    @include mq('phone', min) {
+      top: -2px;
+    }
     
     &,
     &:visited {
@@ -57,12 +84,12 @@
       position: relative;
       display: inline-block;
       
-      @include font-source-sans( $middler, $helper-color, normal, 1.5, $main-font);
+      @include font-source-sans( $middler - 4px, $colorThree, normal, 1.5, $helper-font);
       
       @include mq('phone', min) {
         &, 
         &:visited {
-          color: $white;
+          color: $colorText;
         }
         
         &:after {
@@ -71,7 +98,7 @@
           width: 100%;
           height: 1px;
           top: 0;
-          background-color: $white;
+          background-color: $colorText;
           transition: 0.3s;
         }
       }
@@ -79,23 +106,49 @@
     
     &:hover,
     &:focus {
-      color: $helper-color;
+      color: $colorThree;
       
       @include mq('phone', min) {
         &:after {
-          background-color: $helper-color;
+          background-color: $colorThree;
         }
       }
     }
   }
 }
 
-@mixin editor--headers( $el: false ) {
+@mixin editor--headers( $el: false, $shadow: false ) {
   .title {
-    @if $el { padding-left: 20px; }
+    @if $el {
+        padding-left: 20px;
+      
+      &.text-left {
+        padding-left: 20px;
+      }
+      
+      &.text-right {
+        padding-left: 0;
+        padding-right: 20px;
+      }
+      
+      &.text-center {
+        padding: 0 20%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 60%;
+        box-sizing: content-box;
+      }
+    }
     position: relative;
     margin-bottom: 25px;
     
+    @if $el {
+      text-shadow: -4px -3px 0px $colorTwo, -6px -5px 1px $colorText;
+      letter-spacing: 3px;
+    }
+      
     @if $el {
       &:before {
         content: '';
@@ -106,32 +159,131 @@
         height: 100%;
         min-height: 46px;
         width: 4px;
-        background-color: $helper-color;
-      } 
+        background-color: $colorThree;
+      }
+      
+      &.text-left {
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          min-height: 46px;
+          width: 4px;
+          background-color: $colorThree;
+        }
+      }
+      
+      &.text-right {
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: auto;
+          right: 0;
+          top: 0;
+          height: 100%;
+          min-height: 46px;
+          width: 4px;
+          background-color: $colorThree;
+        }
+        
+        &:before {
+          content: none;
+        }
+      }
+      
+      &.text-center {
+        &:before {
+          left: 0;
+          top: auto;
+          height: 2px;
+          min-height: auto;
+          width: 20%;
+        }
+        
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          right: 0;
+          left: auto;
+          top: auto;
+          height: 2px;
+          min-height: auto;
+          width: 20%;
+          background-color: $colorThree;
+        }
+      }
     }
     
+    &,
     * {
-      @include font-source-sans( $middle, $white, bold, $line-middler - 2px, $main-font);
+      @include font-source-sans( $middle, $colorText, bold, 1.5, $secondary-font);
     }
     
     .color_el,
     .el_color,
     span:not(.el_size),
     span:not(.size_el) {
-      color: $helper-color;
+      color: $colorThree;
     }
     
     .el_size,
     span.el_size,
     .size_el,
     span.size_el {
-      color: $white;
+      color: $helper-four;
       font-size: $middle;
-      text-shadow: -4px -2px 0 $helper-color;
+      text-shadow: -4px -2px 0 $colorThree;
       
       @include mq('extra-tablet', min) {
         font-size: $oversize;
       }
     }
+  }
+}
+
+@mixin editor--subheaders( $el: false ) {
+  .subtitle {
+    &,
+    * {
+        text-transform: uppercase;
+        font-style: italic;
+        font-family: $helper-font;
+        margin-bottom: 25px;
+        color: $colorFive;
+        font-weight: bold; 
+        position: relative;
+    }
+    
+    @if( $el ) {
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 36%;
+        height: 1px;
+        bottom: 0;
+        background-color: $colorFive;
+      }
+    
+      &.text-center {
+        &:after {
+          content: none;
+        }
+      }
+    }
+  } 
+}
+
+@mixin editor--block-title {
+  .block-title {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    
+    @include font-source-sans( $middler, $colorText, $weight-middler, 1.5, $helper-font);
   }
 }

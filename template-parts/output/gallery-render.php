@@ -29,10 +29,10 @@ if( $images ) {
 <section id="<?php echo $output_id; ?>" class="<?php echo $output_class . ' ' . $bem_section; ?>">
   <div class="container-fluid">
     <div class="row-fluid d-flex justify-content-center flex-column">
-      <?php if( !empty( $title ) ) : ?>
+      <?php if( $title !== false ) : ?>
         <div class="col-12 text-center <?php echo $bem_section . '__title'; ?>"><?php echo $title; ?></div>
       <?php endif;
-      if( !empty( $subtitle ) ) : ?>
+      if( $subtitle !== false ) : ?>
         <div class="col-12 text-center <?php echo $bem_section . '__subtitle'; ?>"><?php echo $subtitle; ?></div>
       <?php endif;
       if( !empty( $text ) ) : ?>

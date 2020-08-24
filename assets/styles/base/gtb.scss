@@ -7,7 +7,8 @@
 	outline: 1px solid rgba(gray,.2);
 }
 
-div[data-block] div[class*='preview']{
+div[data-block] div[class*='preview'],
+.interface-interface-skeleton__body {
 	@import 'base-theme-styles.min.css';
 	@import 'less-header-theme-styles.min.css';
 	@import 'less-other-theme-styles.min.css';

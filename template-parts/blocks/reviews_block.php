@@ -59,12 +59,11 @@ $args = array(
                 'numberposts'      => 0,
                 'posts_per_page'   => $per_page ? $per_page : 4,
                 'paged'            => $paged,
-                'post_type'        => 'Reviews',
+                'post_type'        => 'reviews',
                 'orderby'          => 'status',
                 'order'            => 'ASC',
                 'suppress_filters' => true,
 );
-query_posts( $args );
 
 if( $block ) :
   @include( wp_normalize_path(__DIR__ .'/../output/cpt-render.php'));
