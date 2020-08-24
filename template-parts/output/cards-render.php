@@ -30,8 +30,14 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
             
               $title  = hcc_get_acf_title( $el, 'text-center block-title' );
               $text   = wp_kses_post( $el['text'] );
-              $icon   = ( is_array( $el['icon'] ) ) ? esc_url( $el['icon']['url'] ) : esc_url( $el['icon'] );
-              $icon_2 = ( is_array( $el['icon'] ) ) ? esc_url( $el['icon']['url'] ) : esc_url( $el['icon'] );
+              $text   = wp_trim_words($text, 30);
+              $mime   = $el['icon']['mime_type'];
+              $icon   = ( is_array( $el['icon'] ) )     ? esc_url( $el['icon']['url'] ) : esc_url( $el['icon'] );
+              $icon   = ( !$mime === 'image/svg+xml' )  ? aq_resize( $icon, 300, 300, true, true, true ) : $icon;
+              $mime   = $el['icon_two']['mime_type'];
+              $icon_2 = ( is_array( $el['icon_two'] ) ) ? esc_url( $el['icon_two']['url'] ) : esc_url( $el['icon'] );
+              $icon_2 = ( !$mime === 'image/svg+xml' )  ? aq_resize( $icon_2, 300, 300, true, true, true ) : $icon_2;
+              $link   = ( $el['link'] ) ? esc_url( $el['link'] ) : '#';
             
               if( !empty($el) ) :
                 if( get_row_layout() === 'about_block' || strpos( $blockName, 'about_block') !== false ) :
@@ -42,18 +48,8 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
                   $align = 'center';
                 endif;
               ?>
-              <div class="<?php echo $bem_section . '__items__element'; ?>" <?php echo ( $counter % 2 ===0 ) ? 'style="padding-top: 80px;"' : ''; ?>>
-                <?php if( !empty($title) ) : ?>
-                  <div class="w-100 <?php echo $bem_section . '__items__element__title'; ?>">
-                    <?php echo $title; ?>      
-                  </div>
-                <?php endif;
-                if( !empty($text) ) : ?>
-                  <div class="w-100 <?php echo $bem_section . '__items__element__text'; ?> text-<?php echo $align; ?>">
-                    <?php echo $text; ?>      
-                  </div>
-                <?php endif;
-                if( !empty($icon) || !empty($icon_2) ) : ?>
+              <a href="<?php echo $link; ?>" class="d-flex align-items-center flex-column <?php echo $bem_section . '__items__element'; ?>" <?php echo ( $counter % 2 ===0 ) ? 'style="padding-top: 80px;"' : ''; ?>>
+                <?php if( !empty($icon) || !empty($icon_2) ) : ?>
                 <div class="w-100 d-flex align-items-center justify-content-center <?php echo $bem_section . '__items__element__icon'; ?>">
                     <?php if($icon) : ?>
                       <img src="<?php echo $icon; ?>" alt="" class="img-responsive img-inner icon">
@@ -62,8 +58,18 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
                       <img src="<?php echo $icon_2; ?>" alt="" class="img-responsive img-inner icon-hover">
                     <?php endif; ?>
                 </div>
+                <?php endif;
+                if( !empty($title) ) : ?>
+                  <div class="w-100 <?php echo $bem_section . '__items__element__title'; ?>">
+                    <?php echo $title; ?>      
+                  </div>
+                <?php endif;
+                if( !empty($text) ) : ?>
+                  <div class="w-100 <?php echo $bem_section . '__items__element__text'; ?> text-<?php echo $align; ?>">
+                    <?php echo $text; ?>      
+                  </div>
                 <?php endif; ?>
-              </div>
+              </a>
               
               <?php endif;
             $counter++;

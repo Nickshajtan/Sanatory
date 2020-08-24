@@ -73,56 +73,58 @@ section{
     min-height: 100vh;
   }
   
-  &:nth-of-type(2n+3) {
-    background-color: $dark;
-    
-    * {
-      color: $white;
-    }
-    
-    .button,
-    .wp-block-button__link {
-      border-color: $colorTwo;
-      color: $colorText;
-      box-shadow: 1px 5px 9px rgba(255, 255, 255, .5);
-      background-color: $colorTwo;
-      
-      &:hover,
-      &:focus {
-        color: $colorTwo;
-        background-color: transparent;
+  &:not(.banner-section) {
+    &:nth-of-type(2n+3) {
+      background-color: $dark;
+
+      * {
+        color: $white;
       }
+
+      .button,
+      .wp-block-button__link {
+        border-color: $colorTwo;
+        color: $colorText;
+        box-shadow: 1px 5px 9px rgba(255, 255, 255, .5);
+        background-color: $colorTwo;
+
+        &:hover,
+        &:focus {
+          color: $colorTwo;
+          background-color: transparent;
+        }
+      }
+
+      ul>li,
+      ol>li {
+        color: $colorTwo;
+      }
+
+      @include editor--headers( $secondary-font, $white, $colorThree, true, true, $dark, $colorTwo );
+      @include editor--subheaders($helper-font, $colorThree, true);
     }
-    
-    ul>li,
-    ol>li {
-      color: $colorTwo;
+
+    &:nth-of-type(4n+3) {
+      background-color: $colorFive;
+
+      * {
+        color: $colorText;
+      }
+
+      .button,
+      .wp-block-button__link {
+        border-color: $colorThree;
+        color: $colorThree;
+      }
+
+      a:hover,
+      a:focus {
+        color: $white;
+      }
+
+      @include editor--headers( $secondary-font, $dark, $white, true, true, $colorFive, $colorTwo );
+      @include editor--subheaders($helper-font, $white, true);
     }
-    
-    @include editor--headers( $secondary-font, $white, $colorThree, true, true, $dark, $colorTwo );
-    @include editor--subheaders($helper-font, $colorThree, true);
-  }
-  
-  &:nth-of-type(4n+3) {
-    background-color: $colorFive;
-    
-    * {
-      color: $colorText;
-    }
-    
-    .button,
-    .wp-block-button__link {
-      border-color: $colorThree;
-      color: $colorThree;
-    }
-    
-    a:hover,
-    a:focus {
-      color: $white;
-    }
-    
-    @include editor--headers( $secondary-font, $dark, $white, true, true, $colorFive, $colorTwo );
-    @include editor--subheaders($helper-font, $white, true);
   }
   
   section {

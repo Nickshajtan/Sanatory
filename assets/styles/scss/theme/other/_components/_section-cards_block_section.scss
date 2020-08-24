@@ -1,0 +1,59 @@
+.cards-block-section {
+  @include part--advantages;
+  
+  word-break: break-all;
+  
+  &__items {
+    margin-top: 40px;
+    
+    @include mq('extra-tablet', min) {
+      margin-top: 80px;
+    }
+    
+    &__element {
+      padding: 15px 10px;
+      position: relative;
+      
+      &:after {
+        content: none;
+      }
+      
+      &:hover,
+      &:focus {
+        box-shadow: 0 0 5px $colorThree;
+      }
+      
+      &__title {
+        margin-top: 260px;
+      }
+      
+      &__icon {
+        position: absolute;
+        width: 100%;
+        min-height: 230px;
+        max-height: 230px;
+        max-width: 230px;
+        margin: 10px;
+        padding: 0;
+        border-radius: 600px;
+        box-sizing: border-box;
+        overflow: hidden;
+        border: 2px solid $colorThree;
+        
+        @include push--auto;
+        
+        img {
+          width: auto;
+          height: 100%;
+          min-width: 230px;
+          min-height: 230px;
+          display: block;
+          object-fit: cover;
+          border-radius: 800px;
+          
+          @include push--auto;
+        }
+      }
+    }
+  }
+}

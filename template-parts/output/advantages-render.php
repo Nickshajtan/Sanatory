@@ -29,6 +29,7 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
 
               $title  = hcc_get_acf_title( $el, 'text-center block-title' );
               $text   = wp_kses_post( $el['text'] );
+              $text   = wp_trim_words($text, 30);
               $mime   = $el['icon']['mime_type'];
               $icon   = ( is_array( $el['icon'] ) )     ? esc_url( $el['icon']['url'] ) : esc_url( $el['icon'] );
               $icon   = ( !$mime === 'image/svg+xml' )  ? aq_resize( $icon, 300, 300, true, true, true ) : $icon;

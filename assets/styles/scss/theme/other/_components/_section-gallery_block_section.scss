@@ -1,0 +1,46 @@
+.gallery-block-section {
+  &__list {
+    margin-top: 45px;
+    padding: 0;
+    
+    li {
+      list-style: none;
+      min-height: 150px;
+      display: block;
+      
+      span {
+        padding: 0;
+        height: 100%;
+        display: block;
+
+        a {
+          display: block;
+          box-sizing: border-box;
+          transition: .3s;
+          width: 100%;
+          height: 100%;
+          padding: 10px;
+
+          &:after {
+            content: none;
+          }
+
+          &:hover,
+          &:focus {
+            img {
+              border-color: $colorThree;
+            }
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            box-sizing: border-box;
+            border: 2px solid $transparent;
+          }
+        }
+      }
+    }
+  }  
+}

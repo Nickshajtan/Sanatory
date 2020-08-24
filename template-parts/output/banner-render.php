@@ -9,10 +9,10 @@ $output_id    = (!empty( $id )) ? $id : $blockname . '-' . $block_id_str;
 $output_class = ( !empty( $className ) ) ? $className : $blockname . '-' . $block_id;
 $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  . '-section';
 
-$bem_mode_height  = (!empty( $bem_mode_height ) ) ? $bem_mode_height : '';
+$bem_mode_height  = (!empty( $bem_mode_height ) ) ? $bem_mode_height : ''; 
 $bem_mode_align   = (!empty( $bem_mode_align ) )  ? $bem_mode_align : ''; ?>
 
-<section id="<?php echo $output_id; ?>" class="d-flex justify-content-center flex-column <?php echo $output_class . ' ' . $bem_section . ' ' .$bem_mode_height . ' ' . $bem_mode_align; ?>" <?php if( $bg_type === 'image' ) : ?> style="background-image: url('<?php echo $bg_url; ?>);"<?php endif; ?>>
+<section id="<?php echo $output_id; ?>" class="d-flex justify-content-center flex-column <?php echo $output_class . ' ' . $bem_section . ' ' .$bem_mode_height . ' ' . $bem_mode_align; ?>" <?php if( $bg_type === 'image' || $bg_type === 'изображение' ) : ?> style="background-image: url('<?php echo $bg_url; ?>');"<?php endif; ?>>
   <div class="container-fluid">
     <div class="row-fluid d-flex align-items-center justify-content-<?php echo $align; ?> flex-column">
       <?php if( $title !== false ) : ?>
@@ -25,9 +25,9 @@ $bem_mode_align   = (!empty( $bem_mode_align ) )  ? $bem_mode_align : ''; ?>
           <?php echo $subtitle; ?>
         </div>
       <?php endif;
-      if( !empty( $content ) ) : ?>
-        <div class="col-12 <?php echo $bem_section . '__content'; ?>">
-          <?php echo $content; ?>
+      if( !empty( $text ) ) : ?>
+        <div class="col-12 <?php echo $bem_section . '__content'; ?> d-flex flex-column align-items-<?php echo $align; ?>">
+          <?php echo $text; ?>
         </div>
       <?php endif;
       if( is_array( $image ) ) : ?>
@@ -42,16 +42,18 @@ $bem_mode_align   = (!empty( $bem_mode_align ) )  ? $bem_mode_align : ''; ?>
       <?php endif; ?>
     </div>
   </div>
-  <?php if( $bg_type === 'video' && is_array( $bg ) ) : ?>
+  <?php if( ($bg_type === 'видео' || $bg_type === 'video') && is_array( $bg ) ) : ?>
         <video class="col-12 p-0 m-0 <?php echo $bem_section . '__video'; ?>">
           <source src="<?php echo $bg_url; ?>">
           <?php echo __('Тег video не поддерживается вашим браузером.', 'hcc'); ?>
         </video>
   <?php endif;
   if( $arrow_visibility ) : ?>
-    <div class="w-100 p-absolute d-flex align-items-center justify-content-<?php echo $dalign; ?>">
+    <div class="w-100 p-absolute d-flex align-items-center justify-content-<?php echo $dalign; ?> <?php echo $bem_section . '__arrow'; ?>">
       <?php if( $icon_src !== false ) : ?>
-          <img src="<?php echo $icon_src; ?>" alt="" class="arrow-down">
+          <a href="#" class="d-block <?php echo $bem_section . '__icon'; ?>">
+            <img src="<?php echo $icon_src; ?>" alt="" class="arrow-down">
+          </a>
       <?php endif; ?>
     </div>
   <?php endif; ?>
