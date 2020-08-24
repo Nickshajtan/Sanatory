@@ -21,3 +21,75 @@
 
   perspective: $perspective;
 }
+
+// Horisontal flip
+@mixin flip--horisontal{
+    position: relative;
+    perspective: 500px;
+    
+    &.v {
+      &:hover,
+      &.flip {
+        .front {
+          transform: rotateX(180deg);
+        }
+
+        .back {
+          transform: rotateX(0deg);
+        }
+      }
+
+      .back {
+        transform: rotateX(-180deg);
+      }
+    }
+    
+    .front,
+      .back {
+        box-sizing: border-box;
+        transition: all 0.5s ease-in;
+        backface-visibility: hidden;
+        position: absolute;
+        margin: auto;
+
+        &.single {
+          backface-visibility: visible;
+        }
+    }
+}
+
+// Vertical flip
+@mixin flip--vertical {
+    position: relative;
+    perspective: 500px;
+    
+    &.h {
+      &:hover,
+      &.flip {
+        .front {
+          transform: rotateY(180deg);
+        }
+
+        .back {
+          transform: rotateY(0deg);
+        }   
+      }
+
+      .back {
+        transform: rotateY(-180deg);
+      }
+    }
+  
+    .front,
+      .back {
+        box-sizing: border-box;
+        transition: all 0.5s ease-in;
+        backface-visibility: hidden;
+        position: absolute;
+        margin: auto;
+
+        &.single {
+          backface-visibility: visible;
+        }
+    }
+}

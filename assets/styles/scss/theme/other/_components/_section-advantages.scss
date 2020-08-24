@@ -1,0 +1,25 @@
+.about-block-section {
+  @include part--advantages;
+  
+  &__items {
+    @include mq('extra-tablet', min) {
+      margin-top: 50px;
+    }
+  }
+}
+
+.services-block-section {
+  @include part--advantages;
+  
+  &__items {
+    @include mq('extra-tablet', min) {
+      margin-top: 50px;
+    }
+    
+    &__element {
+      &__text {
+        padding: 0 15px;
+      }
+    }
+  }
+}
