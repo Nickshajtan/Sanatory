@@ -37,7 +37,7 @@ if( $your_query->have_posts() ) :
                         </div>
                     <?php endif; ?>
                     <div class="col-12 error-page__section__content-wrapper">
-                        <div class="error-page__section__content text-white text-center">
+                        <div class="error-page__section__content text-center title">
                           <?php echo ( $content ) ? $content : __('Упс, такой страницы не существует!', 'hcc'); ?>
                         </div>
                         <?php if( $home_btn_visibility === 'show' || $back_btn_visibility === 'show' ) : ?>
