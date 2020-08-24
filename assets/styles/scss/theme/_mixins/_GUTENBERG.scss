@@ -1,0 +1,5 @@
+@mixin editor--gtn {
+  .wp-block-button__link {
+    @extend %button;
+  }
+}

@@ -1,6 +1,5 @@
 /*** Form + Modal Form ***/
 section.cf, .modal-form.cf{
-    box-shadow: 0 -5px 15px -5px rgba(0,0,0,0.6);
     z-index: 70;
     position: relative; 
   
@@ -13,6 +12,7 @@ section.cf, .modal-form.cf{
 .cf-section {
     padding: 70px 0 70px 0;
     background-attachment: fixed;
+    box-shadow: 0 -5px 30px -5px rgba(0,0,0,0.3);
   
     @include bg--auto($transparent, none, cover, no-repeat, overlay);
   
@@ -28,7 +28,7 @@ section.cf, .modal-form.cf{
         &,
         * {
           
-          @include editor--headers;
+          @include editor--headers( $secondary-font, $colorText, $colorThree, true, true, $colorTwo, $colorText );
           
           &,
           .color_el,

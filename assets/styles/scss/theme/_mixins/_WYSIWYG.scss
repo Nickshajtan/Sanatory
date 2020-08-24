@@ -117,7 +117,7 @@
   }
 }
 
-@mixin editor--headers( $el: false, $shadow: false ) {
+@mixin editor--headers( $font: $secondary-font, $text: $colorText, $color: $colorThree, $el: false, $shadow: false, $shadow-color: $colorTwo, $shadow-color-two: $colorText ) {
   .title {
     @if $el {
         padding-left: 20px;
@@ -145,7 +145,7 @@
     margin-bottom: 25px;
     
     @if $el {
-      text-shadow: -4px -3px 0px $colorTwo, -6px -5px 1px $colorText;
+      text-shadow: -4px -3px 0px $shadow-color, -6px -5px 1px $shadow-color-two;
       letter-spacing: 3px;
     }
       
@@ -159,7 +159,7 @@
         height: 100%;
         min-height: 46px;
         width: 4px;
-        background-color: $colorThree;
+        background-color: $color; //$colorThree;
       }
       
       &.text-left {
@@ -172,7 +172,7 @@
           height: 100%;
           min-height: 46px;
           width: 4px;
-          background-color: $colorThree;
+          background-color: $color;
         }
       }
       
@@ -187,7 +187,7 @@
           height: 100%;
           min-height: 46px;
           width: 4px;
-          background-color: $colorThree;
+          background-color: $color;
         }
         
         &:before {
@@ -214,21 +214,21 @@
           height: 2px;
           min-height: auto;
           width: 20%;
-          background-color: $colorThree;
+          background-color: $color;
         }
       }
     }
     
     &,
     * {
-      @include font-source-sans( $middle, $colorText, bold, 1.5, $secondary-font);
+      @include font-source-sans( $middle, $text, bold, 1.5, $font);
     }
     
     .color_el,
     .el_color,
     span:not(.el_size),
     span:not(.size_el) {
-      color: $colorThree;
+      color: $color;
     }
     
     .el_size,
@@ -237,7 +237,10 @@
     span.size_el {
       color: $helper-four;
       font-size: $middle;
-      text-shadow: -4px -2px 0 $colorThree;
+      
+      @if $el {
+        text-shadow: -4px -2px 0 $shadow-color;
+      }
       
       @include mq('extra-tablet', min) {
         font-size: $oversize;
@@ -246,15 +249,15 @@
   }
 }
 
-@mixin editor--subheaders( $el: false ) {
+@mixin editor--subheaders( $font: $helper-font, $color: $dark, $el: false ) {
   .subtitle {
     &,
     * {
         text-transform: uppercase;
         font-style: italic;
-        font-family: $helper-font;
+        font-family: $font;
         margin-bottom: 25px;
-        color: $colorFive;
+        color: $color;
         font-weight: bold; 
         position: relative;
     }
@@ -267,12 +270,21 @@
         width: 36%;
         height: 1px;
         bottom: 0;
-        background-color: $colorFive;
+        left: 0;
+        right: auto;
+        background-color: $color;
       }
     
       &.text-center {
         &:after {
           content: none;
+        }
+      }
+      
+      &.text-right {
+        &:after {
+          right: 0;
+          left: auto;
         }
       }
     }

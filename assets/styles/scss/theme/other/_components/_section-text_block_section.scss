@@ -1,0 +1,17 @@
+.text-block-section,
+.text-block-text-block-flexible,
+.text-block-text-block-block {
+  &__img-part img,
+  img {
+    max-width: 100%;
+    object-fit: contain;
+    transition: .3s;
+    border: 1px solid transparent;
+    cursor: pointer;
+    box-shadow: 5px 0 5px rgba(0,0,0, .4);
+      
+    &:hover {
+      border-color: $colorThree;
+    }
+  }
+}

@@ -16,7 +16,7 @@ get_header();
 if( have_posts() ) : 
     while ( have_posts() ) :
         the_post(); ?>
-        <section id="content" class="container-fluid site-container page_front page">
+        <section id="content" class="container-fluid site-container page_front page ">
               <div class="row">
                 <div class="col-12 page__content page_front__content">
                   <?php the_content(); ?>

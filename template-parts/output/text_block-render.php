@@ -54,17 +54,17 @@ else:
   }
 endif;
 
+$bem_block        = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  . '-section';
 $first_col_class  = $bem_block . '__img-part ' . $img_order;
 $second_col_class = $bem_block . '__text-part ' . $txt_order;
 $block_id_str     = str_shuffle('0123456789abcdefghijklmnopqrstuvwxyz');
 $output_id        = ( !empty( $id ) && !is_null( $id ) ) ? $id : $blockname . '-' . $block_id_str; 
 $output_class     = ( !empty( $className ) ) ? $className : $blockname . '-' . $block_id;
-$bem_block        = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  . '-section';
 $bem_mod          = $blockname . $class_mod; ?>
 
 <section id="<?php echo $output_id; ?>" class="<?php echo $bem_block . ' ' . $bem_mod . ' ' . $output_class; ?> d-flex align-items-center justify-content-center">
   <div class="container">
-    <div class="row d-flex align-items-center justify-content-<?php echo $justify; ?>">
+    <div class="row d-flex align-items-start justify-content-<?php echo $justify; ?>">
       <?php 
     if( $row_layout === 'text_right_block' || $row_layout === 'text_left_block' || $class_mod === '_left-position' || $class_mod === '_right-position' ) :
       
@@ -74,7 +74,7 @@ $bem_mod          = $blockname . $class_mod; ?>
         /* --- Two columns ---*/
         if( $image ) : ?>
           <div class="col-12 col-md-<?php echo $img_class; ?> <?php echo $first_col_class; ?> d-flex flex-column align-items-center">
-            <img src="<?php echo $img_src; ?>" alt="<?php echo $img_alt; ?>" title="<?php echo $img_title; ?>" class="img-responsive img-inner <?php echo $bem_block . '__img-part__img'; ?>">
+              <img src="<?php echo $img_src; ?>" alt="<?php echo $img_alt; ?>" title="<?php echo $img_title; ?>" class="img-responsive img-inner <?php echo $bem_block . '__img-part__img'; ?>">
           </div>
         <?php endif; 
         if( $subtitle || $title || !empty( $content ) ) : ?>
@@ -109,18 +109,22 @@ $bem_mod          = $blockname . $class_mod; ?>
             $txt_class = 4;
           endif;
       ?>
+        <?php if( $title || $subtitle ) : ?>
+        <div class="col-12 <?php echo $bem_block . '__text-part__tile'; ?>">
+            <?php if( $title !== false ) : ?>
+            <div class="w-100 <?php echo $bem_block . '__text-part__title'; ?> d-flex justify-content-center">
+              <?php echo $title; ?>
+            </div>
+            <?php endif;
+            if( $subtitle !== false ) : ?>
+            <div class="w-100 <?php echo $bem_block . '__text-part__subtitle'; ?>">
+              <?php echo $subtitle; ?>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
         <div class="col-12 col-md-<?php echo ( !$image_l && !$image_r ) ? 12 : 6; ?> col-lg-<?php echo $txt_class; ?> d-flex flex-column order-1 order-md-3 order-lg-2 <?php echo $bem_block . '__text-part '; ?>">
-          <?php if( $title !== false ) : ?>
-          <div class="w-100 <?php echo $bem_block . '__text-part__title'; ?> d-flex justify-content-center">
-            <?php echo $title; ?>
-          </div>
-          <?php endif;
-          if( $subtitle !== false ) : ?>
-          <div class="w-100 <?php echo $bem_block . '__text-part__subtitle'; ?>">
-            <?php echo $subtitle; ?>
-          </div>
-          <?php endif;
-          if( !empty( $content ) ) : ?>
+          <?php if( !empty( $content ) ) : ?>
           <div class="w-100 ml-auto mr-auto d-flex flex-column align-items-center <?php echo $bem_block . '__text-part__content'; ?>">
             <?php echo $content; ?>
           </div>

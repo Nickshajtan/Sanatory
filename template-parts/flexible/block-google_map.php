@@ -30,7 +30,7 @@ $output_id    = (!empty( $id )) ? $id : $blockname . '-' . $block_id_str;
 $output_class = ( !empty( $className ) ) ? $className : $blockname . '-' . $block_id;
 $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  . '-section'; ?>
 
-<section id="<?php echo $output_id; ?>" class="<?php echo $output_class . ' ' . $bem_section; ?> p-0">
+<section id="<?php echo $output_id; ?>" class="<?php echo $output_class . ' ' . $bem_section; ?> pl-0 pr-0">
   <?php if( $title !== false ) : ?>
     <div class="container">
       <div class="row">

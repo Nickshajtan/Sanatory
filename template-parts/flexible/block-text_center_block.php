@@ -16,13 +16,13 @@ $image_l     = $block['image_left'];
 $img_l_alt   = ( is_array( $image_l ) ) ? esc_attr( $image_l['alt'] )   : '';
 $img_l_title = ( is_array( $image_l ) ) ? esc_attr( $image_l['title'] ) : '';
 $img_l_src   = ( is_array( $image_l ) ) ? esc_url(  $image_l['url'] )    : esc_url( $image_l );
-$img_l_src   = aq_resize( $img_src, 680, 500, true, true, true);
+$img_l_src   = aq_resize( $img_l_src, 680, 500, true, true, true);
 
 $image_r     = $block['image_right'];
 $img_r_alt   = ( is_array( $image_r ) ) ? esc_attr( $image_r['alt'] )   : '';
 $img_r_title = ( is_array( $image_r ) ) ? esc_attr( $image_r['title'] ) : '';
-$img_r_src   = ( is_array( $image_r ) ) ? esc_url(  $image_r['url'] )    : esc_url( $image_r );
-$img_r_src   = aq_resize( $img_src, 680, 500, true, true, true);
+$img_r_src   = ( is_array( $image_r ) ) ? esc_url(  $image_r['url'] )   : esc_url( $image_r );
+$img_r_src   = aq_resize( $img_r_src, 680, 500, true, true, true);
 
 $id = null;
 

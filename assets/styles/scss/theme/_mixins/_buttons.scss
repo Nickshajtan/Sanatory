@@ -7,23 +7,29 @@
   padding: $padding;
 }
 
-@mixin proto--btn {
+@mixin proto--btn( $bg-color: $helper-color, $color: $white, $radius: 0 ) {
   text-transform: uppercase;
   max-width: 100%;
   display: block;
-  border: 1px solid $helper-color;
+  border: 1px solid $bg-color;
   box-sizing: border-box;
   text-align: center;
   transition: 0.3s;
   cursor: pointer;
   
-  @include rounded--button($white, 100px, relative, $helper-color, 17px 37px);
-  @include font-source-sans( $regular, $white, 600, 1, $main-font);
+  @include rounded--button(  $color, $radius, relative, $bg-color, 17px 37px);
+  @include font-source-sans( $regular, $color, 600, 1, $main-font );
   
   &:hover,
   &:focus {
     background-color: $transparent;
-    border-color: $white;
-    color: $white;
+    border-color: $bg-color;
+    color: $color;
+  }
+}
+
+@mixin color--btn( $bg-color, $color ) {
+  .#{$color}-btn {
+    @include proto--btn( $bg-color, $color );
   }
 }

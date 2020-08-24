@@ -42,8 +42,8 @@ query_posts( $args );
                   $content   = wp_trim_words( $content, 50, '...');
                   $image     = get_the_post_thumbnail( $post->ID, 'medium', array('class' => "img-inner cpt-image $post_type-image") );
                   $image_big = ( get_the_post_thumbnail_url() ) ? esc_url( get_the_post_thumbnail_url('large') ) : '#';
-                  $link      = get_permalink();
-                  $permalink = (!empty( $link ) ) ? esc_url( get_permalink() ) : '#';
+                  $post_link = get_permalink();
+                  $permalink = (!empty( $post_link ) ) ? esc_url( get_permalink() ) : '#';
 
                   ?>
                   
@@ -111,5 +111,7 @@ query_posts( $args );
     </div>
   </div>
 </section>
-<?php $post = $tmp_post;
+<?php 
+unset( $link );
+$post = $tmp_post;
 //wp_reset_postdata(); ?>

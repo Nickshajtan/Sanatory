@@ -135,12 +135,12 @@
                 border-radius: 0;
                 padding: 10px 15px;
                 color: $colorText;
-                box-shadow: 0 0 5px $transparent;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
               
                 &:hover, 
                 &:focus {
                     outline: none;
-                    box-shadow: none;
+                    //box-shadow: none;
                     border-color: $colorFive;
                     background: 0 0;
                     color: #fff;
