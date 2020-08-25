@@ -299,3 +299,30 @@
     @include font-source-sans( $middler, $colorText, $weight-middler, 1.5, $helper-font);
   }
 }
+
+@mixin editor--card--article {
+  .card-block {
+    transition: .3s;
+    
+    .img-wrap {
+      box-sizing: border-box;
+      
+      img {
+        border: 1px solid transparent;
+      }
+    }
+    
+    &:after {
+      content: none;
+    }
+    
+    &:hover,
+    &:focus {
+      .img-wrap {
+        img { 
+          border: 1px solid $colorThree;
+        }
+      }
+    } 
+  }
+}

@@ -15,12 +15,12 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
     <?php if( $title || $subtitle ) : ?>
     <div class="row">
        <?php if( $title !== false ) : ?>
-         <div class="col-12 <?php echo $bem_section . ' ' . '__title'; ?>">
+         <div class="col-12 <?php echo $bem_section . '__title'; ?>">
            <?php echo $title; ?>
          </div>
        <?php endif;
        if( $subtitle !== false ) : ?>
-         <div class="col-12 <?php echo $bem_section . ' ' . '__subtitle'; ?>">
+         <div class="col-12 <?php echo $bem_section . '__subtitle'; ?>">
            <?php echo $subtitle; ?>
          </div>
        <?php endif; ?>
@@ -30,7 +30,7 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
   
   <?php if( is_array( $shares ) || is_object( $shares ) && !is_null( $shares )) : ?>
   <div class="container-fluid">
-    <div class="row-fluid d-flex justify-content-center align-items-center flex-row flex-wrap <?php echo $bem_section . ' ' . '__list'; ?>">
+    <div class="row-fluid d-flex justify-content-center align-items-center flex-row flex-wrap <?php echo $bem_section . '__list'; ?>">
            <?php $count = 1;
            foreach( $shares as $post ) :
              setup_postdata($post); 
@@ -40,27 +40,31 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
              $content   = strip_tags( wp_kses_post( get_the_content() ) ); 
              $content   = wp_trim_words( $content, 50, '...');
              $image     = get_the_post_thumbnail( $post->ID, 'full' );
-            
+             $link      = ( get_permalink() ) ? esc_url( get_permalink() ) : '#';
+             
            ?>
-   <div class="col-12 col-md-6 col-xl-4 d-flex justify-content-center align-items-center flex-column <?php echo $bem_section . ' ' . '__list__item share' . $count; ?>">
-      <div class="row">
-        <?php if( $image ) : ?>
-          <div class="col-12 <?php echo $bem_section . ' ' . '__list__item__img'; ?>">
-            <?php echo $image; ?>
-          </div>
-        <?php endif;
-        if( $title ) : ?>
-          <div class="col-12 <?php echo $bem_section . ' ' . '__list__item__title'; ?>">
-            <?php echo $title; ?>
-          </div>
-        <?php endif;
-        if( $content ) : ?>
-          <div class="col-12 <?php echo $bem_section . ' ' . '__list__item__content'; ?>">
-            <?php echo $content; ?>
-          </div>
-        <?php endif; ?>
-      </div>
-   </div>
+   <article class="col-12 col-md-6 col-xl-4 d-flex justify-content-center align-items-center flex-column <?php echo $bem_section . '__list__item share' . $count; ?>" data-link="<?php echo $permalink; ?>">
+     <a href="<?php echo $link; ?>" class="card-block w-100 d-block ">
+            <?php if( $image ) : ?>
+              <div class="w-100 img-wrap <?php echo $bem_section . '__list__item__img'; ?>">
+                <?php echo $image; ?>
+              </div>
+            <?php endif;
+            if( $title ) : ?>
+              <div class="w-100 block-title <?php echo $bem_section .  '__list__item__title'; ?>">
+                <?php echo $title; ?>
+              </div>
+            <?php endif;
+            if( $content ) : ?>
+              <div class="w-100 text-wrap <?php echo $bem_section . '__list__item__content'; ?>">
+                <?php echo $content; ?>
+              </div>
+            <?php endif; ?>
+            <div data-href="<?php echo $link; ?>" class="button w-100 <?php echo $bem_section .  '__list__item__link'; ?>">
+                            <?php echo __('Узнать больше', 'hcc'); ?>
+            </div>
+     </a>
+   </article>
            <?php $count++; 
       endforeach; ?>
     </div>

@@ -58,6 +58,7 @@ section{
   @include editor--headers( $secondary-font, $colorText, $colorThree, true, true, $colorTwo, $colorText );
   @include editor--subheaders($helper-font, $colorThree, true);
   @include editor--block-title;
+  @include editor--card--article;
   
   &.site-container {
     padding-top: 40px;
@@ -77,8 +78,10 @@ section{
     &:nth-of-type(2n+3) {
       background-color: $dark;
 
-      * {
-        color: $white;
+      &:not(.slider-section) {
+        * {
+          color: $white;
+        } 
       }
 
       .button,
@@ -100,15 +103,19 @@ section{
         color: $colorTwo;
       }
 
-      @include editor--headers( $secondary-font, $white, $colorThree, true, true, $dark, $colorTwo );
-      @include editor--subheaders($helper-font, $colorThree, true);
+      &:not( .slider-section ) {
+        @include editor--headers( $secondary-font, $white, $colorThree, true, true, $dark, $colorTwo );
+        @include editor--subheaders($helper-font, $colorThree, true); 
+      }
     }
 
     &:nth-of-type(4n+3) {
       background-color: $colorFive;
 
-      * {
-        color: $colorText;
+      &:not( .slider-section ) {
+        * {
+          color: $colorText;
+        }
       }
 
       .button,
@@ -122,8 +129,10 @@ section{
         color: $white;
       }
 
-      @include editor--headers( $secondary-font, $dark, $white, true, true, $colorFive, $colorTwo );
-      @include editor--subheaders($helper-font, $white, true);
+      &:not( .slider-section ) {
+        @include editor--headers( $secondary-font, $dark, $white, true, true, $colorFive, $colorTwo );
+        @include editor--subheaders($helper-font, $white, true);
+      }
     }
   }
   

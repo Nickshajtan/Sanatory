@@ -1,0 +1,72 @@
+@mixin card--absolute {
+  &__list {
+    &__item {
+      position: relative;
+      
+      &__img {
+        position: absolute;
+        z-index: 4;
+        width: 95%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 0 15px;
+        
+        @include push--auto;
+        
+        img {
+          position: absolute;
+          width: 100%;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(0.5);
+          transition: .3s;
+          
+          @include push--auto;
+        }
+      }
+      
+      &__title,
+      &__link,
+      &__content {
+        position: relative;
+        z-index: 5;
+      }
+      
+      &__link {
+        border-radius: 0;
+      }
+      
+      .card-block {
+        &:hover,
+        &:focus {
+          img {
+            filter: contrast(0.6);
+          }
+        } 
+      }
+      
+      &__content,
+      &__title,
+      &__title.block-title, 
+      .block-title {
+        padding: 20px 30px;
+        
+        &,
+        * {
+          color: $white;
+        }
+      }
+    }
+  } 
+}
+
+%card-absolute {
+  @include card--absolute;
+}

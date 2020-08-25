@@ -1,0 +1,37 @@
+.slider-section {
+  min-height: 70vh;
+  height: auto;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-origin: content-box;
+  background-size: cover;
+  background-blend-mode: exclusion;
+  position: relative;
+  
+  &__slider {
+    &__slide {
+      &__content {
+        color: $white;
+        padding: 0 14px;
+      }
+      
+      padding-top: 15px;
+      padding-bottom: 150px;
+    }
+  }
+  
+  &__title-block {
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    &__title {
+     @include editor--headers( $secondary-font, $white, $colorThree, true, true, $colorThree, $white );
+    }
+    
+    &__subtitle {
+      @include editor--subheaders($helper-font, $white, true);
+    }
+  }
+}

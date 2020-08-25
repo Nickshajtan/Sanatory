@@ -12,6 +12,7 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
 $post_wrap_md = ( !empty( !$grid_set ) ) ? $bem_section . '__posts_grid' : $bem_section . '__posts_flex';
 $post_wrap_cl = ( !empty( !$grid_set ) ) ? $grid_set . ' ' . $bem_section . '__posts' . ' ' . $post_wrap_md 
                                          : 'col-12' . $bem_section . '__posts'  . ' ' . $post_wrap_md;
+$ajax = get_option('hcc-ajax-load');
 
 global $post;
 $tmp_post = $post;
@@ -39,7 +40,7 @@ query_posts( $args );
                   $post_type = get_post_type( get_the_ID() );
                   $title     = wp_kses_post( get_the_title() ); 
                   $content   = strip_tags( wp_kses_post( get_the_content() ) ); 
-                  $content   = wp_trim_words( $content, 50, '...');
+                  $content   = ( $post_type === 'post' ) ? wp_trim_words( $content, 50, '...') : $content;
                   $image     = get_the_post_thumbnail( $post->ID, 'medium', array('class' => "img-inner cpt-image $post_type-image") );
                   $image_big = ( get_the_post_thumbnail_url() ) ? esc_url( get_the_post_thumbnail_url('large') ) : '#';
                   $post_link = get_permalink();
@@ -48,21 +49,29 @@ query_posts( $args );
                   ?>
                   
               <?php if( !$grid_set ) : ?>
-              <article class="col-12 col-md-6 col-lg-4 col-xl-3 <?php echo $bem_section . '__posts' . '__item'; ?>" data-link="<?php echo $permalink; ?>">
-                      <?php if( !empty( $title ) ) : ?>
-                        <div class="w-100 <?php echo $bem_section . '__posts' . '__item__title'; ?>">
-                          <?php echo $title; ?>
-                        </div>
-                      <?php endif;
-                      if( !empty( $content ) ) : ?>
-                        <div class="w-100 <?php echo $bem_section . '__posts' . '__item__content'; ?>">
-                          <?php echo $content; ?>
-                        </div>
-                      <?php endif;
-                      if( $image ) : ?>
-                        <a href="<?php echo $image_big; ?>" class="d-block fancybox" data-fancybox="<?php echo $post_type; ?>" <?php if( $title ) : ?>data-name="<?php echo $title; ?>"<?php endif; ?>>
-                          <?php echo $image; ?>
-                        </a>
+              <article class="col-12 col-md-6 col-lg-4 col-xl-3 <?php echo $bem_section . '__list' . '__item'; ?>" data-link="<?php echo $permalink; ?>">
+                      <?php if( $post_type === 'post' ) : ?><a href="<?php echo $permalink; ?>" class="w-100 d-block card-block"><?php endif; ?>
+                     
+                       <?php if( !empty( $title ) ) : ?>
+                          <div class="w-100 block-title <?php echo $bem_section . '__list' . '__item__title'; ?>">
+                            <?php echo $title; ?>
+                          </div>
+                        <?php endif;
+                        if( !empty( $content ) ) : ?>
+                          <div class="w-100 <?php echo $bem_section . '__list' . '__item__content'; ?>">
+                            <?php echo $content; ?>
+                          </div>
+                        <?php endif; ?>
+                      <?php if( $image ) : ?>
+                          <div class="w-100 img-wrap <?php echo $bem_section . '__list' . '__item__img'; ?>">
+                            <?php echo $image; ?>
+                          </div>
+                       <?php endif; ?>
+                      <?php if( $post_type === 'post' ) : ?>
+                         <div data-href="<?php echo $permalink; ?>" class="button w-100 <?php echo $bem_section .  '__list__item__link'; ?>">
+                          <?php echo __('Узнать больше', 'hcc'); ?>
+                         </div>
+                      </a>
                       <?php endif; ?>
               </article>
               <?php endif; ?>
@@ -71,7 +80,7 @@ query_posts( $args );
             if( !$grid_set ) : ?>
             </div>
           <?php endif; 
-          if( function_exists( 'the_posts_pagination' ) ) : ?>
+          if( function_exists( 'the_posts_pagination' ) && $ajax ) : ?>
             <div class="col-12 pagination-wrapper">
               <div class="w-100 d-none justify-content-center align-items-center">
                   <?php the_posts_pagination(); ?>
@@ -81,7 +90,7 @@ query_posts( $args );
         <div class="col-12 pagination-wrapper">
             <div class="row load-container <?php echo $bem_section . '__posts' . '__btns'; ?>">
                 <?php $count_service = wp_count_posts($post_type); 
-                if ( $count_service->publish > $per_page ) : ?>
+                if ( $ajax && ( $count_service->publish > $per_page ) ) : ?>
                         <div class="col-12 d-flex justify-content-center align-items-center">
                            <div class="load-loder d-flex justify-content-center align-items-center"></div>
                         </div>
@@ -98,7 +107,7 @@ query_posts( $args );
                         </script>
                  <?php endif; ?>
                  <?php if( $link ): ?>
-                    <div class="col-12 col-md-6 d-flex flex-column justify-content-end align-items-center align-items-md-start">
+                    <div class="col-12 col-md-<?php echo ( $ajax ) ? 6 : 12; ?> d-flex flex-column justify-content-end align-items-center align-items-md-<?php echo ( $ajax ) ? 'start' : 'center'; ?>">
                         <a class="button d-flex align-items-center justify-content-center" href="<?php echo $link_url; ?>" target="<?php echo $link_target; ?>">
                             <?php echo $link_title; ?>
                         </a>

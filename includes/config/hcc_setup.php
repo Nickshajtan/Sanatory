@@ -151,6 +151,7 @@ function hcc_remove_menus(){
         }
         /** Post pages **/
         //remove_menu_page( 'edit.php' );
+        remove_menu_page( 'edit-comments.php' );
     }
     if ( function_exists('remove_submenu_page') ) {
       if( !current_user_can('manage_options') ) {

@@ -27,34 +27,35 @@ $bem_section  = ( !empty( $blockname ) ) ? $blockname . '-section': $blockName  
              $image     = get_the_post_thumbnail_url( $post->ID, 'full' );
             
            ?>
-   <div class="col-12 m-0 p-0 d-flex justify-content-center align-items-center flex-column <?php echo $bem_section . ' ' . '__slider__slide slide' . $count; ?>" <?php if( $title ) : ?> data-title="<?php echo $title; ?>" <?php endif; ?> style="background-image: url('<?php echo $image; ?>');">
+   <div class="col-12 m-0 pl00 pr-0 d-flex justify-content-center align-items-center flex-column <?php echo $bem_section . ' ' . '__slider__slide slide' . $count; ?>" <?php if( $title ) : ?> data-title="<?php echo $title; ?>" <?php endif; ?> style="background-image: url('<?php echo $image; ?>');">
         <?php if( !empty( $content ) ) : ?>
-        <div class="w-100 <?php echo $bem_section . ' ' . '__slider__slide__content'; ?>">
+        <div class="w-100 <?php echo $bem_section . '__slider__slide__content'; ?>">
           <?php echo $content; ?>
         </div>
         <?php endif; ?>
    </div>
            <?php $count++; endforeach; 
      endif; ?>
-      
-      <?php if( $global_title || $global_subtitle ) : ?>
-      <div class="p-absolute col-12 <?php echo $bem_section . ' ' . '__title-block'; ?>">
+    
+    </div>
+    
+    <?php if( $global_title || $global_subtitle ) : ?>
+      <div class="p-absolute col-12 <?php echo $bem_section . '__title-block'; ?>">
         <div class="row">
           <?php if( $global_title !== false ) : ?>
-            <div class="col-12 <?php echo $bem_section . ' ' . '__title-block__title'; ?>">
+            <div class="col-12 <?php echo $bem_section . '__title-block__title'; ?>">
               <?php echo $global_title; ?>
             </div>
           <?php endif;
           if( $global_subtitle !== false ) : ?>
-            <div class="col-12 <?php echo $bem_section . ' ' . '__title-block__subtitle'; ?>">
+            <div class="col-12 <?php echo $bem_section . '__title-block__subtitle'; ?>">
               <?php echo $global_subtitle; ?>
             </div>
           <?php endif; ?>
         </div>
       </div>
       <?php endif; ?>
-      
-    </div>
+    
   </div>
 </section>
 <?php $post = $tmp_post;
